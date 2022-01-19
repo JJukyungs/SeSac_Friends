@@ -85,11 +85,10 @@
 				1E40C84F279702C5009CB80E /* PhoneCertificationView.swift */,
 				1E40C8172795859B009CB80E /* Assets.xcassets */,
 				1E40C8192795859B009CB80E /* LaunchScreen.storyboard */,
-				1E40C81C2795859B009CB80E /* Info.plist */,
-				1E40C84927969F4A009CB80E /* GoogleService-Info.plist */,
 				1E40C84B2796AD63009CB80E /* UIColor+Extension.swift */,
 				1E40C8512797F03D009CB80E /* UIButton+Extension.swift */,
 				1E40C8532797F690009CB80E /* UIFont+Extension.swift */,
+				1E40C85B27984705009CB80E /* etc */,
 			);
 			path = SeSac_Friends;
 			sourceTree = "<group>";
@@ -101,6 +100,15 @@
 				1E40C8562798052A009CB80E /* NotoSansCJKkr-Regular.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		1E40C85B27984705009CB80E /* etc */ = {
+			isa = PBXGroup;
+			children = (
+				1E40C81C2795859B009CB80E /* Info.plist */,
+				1E40C84927969F4A009CB80E /* GoogleService-Info.plist */,
+			);
+			path = etc;
 			sourceTree = "<group>";
 		};
 		4C9AA2998C723B9F8FA33905 /* Pods */ = {
