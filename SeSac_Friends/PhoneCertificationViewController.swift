@@ -43,7 +43,7 @@ class PhoneCertificationViewController: UIViewController {
                 print("error", error.debugDescription)
             }
         }
-
+        // test
         
     }
 }
