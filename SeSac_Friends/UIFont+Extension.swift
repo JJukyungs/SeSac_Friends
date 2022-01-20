@@ -15,7 +15,7 @@ extension UIFont {
     static let Title3_M14 = UIFont(name: "NotoSansCJKkr-Medium", size: 14)
     static let Title4_R14 = UIFont(name: "NotoSansCJKkr-Regular", size: 14)
     static let Title5_M12 = UIFont(name: "NotoSansCJKkr-Medium", size: 12)
-    static let Title6_R12 = UIFont(name: "", size: 12)
+    static let Title6_R12 = UIFont(name: "NotoSansCJKkr-Regular", size: 12)
     static let Body1_M16 = UIFont(name: "NotoSansCJKkr-Medium", size: 16)
     static let Body2_R16 = UIFont(name: "NotoSansCJKkr-Regular", size: 16)
     static let Body3_R14 = UIFont(name: "NotoSansCJKkr-Regular", size: 14)

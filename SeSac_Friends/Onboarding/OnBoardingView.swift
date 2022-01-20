@@ -12,7 +12,12 @@ class OnBoardingView: UIView {
     
     
     let collectionView: UICollectionView = {
-        let collectionView = UICollectionView()
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isPagingEnabled = true
         
         return collectionView
     }()
@@ -26,12 +31,14 @@ class OnBoardingView: UIView {
     
     let startButton: UIButton = {
         let button = UIButton()
-        
+        button.backgroundColor = .greenColor
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -40,6 +47,8 @@ class OnBoardingView: UIView {
     
     func setupView() {
         addSubview(collectionView)
+        addSubview(pageControll)
+        addSubview(startButton)
     
     }
     
@@ -47,14 +56,15 @@ class OnBoardingView: UIView {
     func setupConstraints() {
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview()()
-            make.leading.equalToSuperview().offset(7)
-            make.trailing.equalToSuperview().offset(-8)
+            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.leading.equalTo(self.safeAreaLayoutGuide)
+            make.trailing.equalTo(self.safeAreaLayoutGuide)
             
         }
         
         pageControll.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom).offset(3)
+            make.top.equalTo(collectionView.snp.bottom).offset(56)
+            make.centerX.equalToSuperview()
             
         }
         

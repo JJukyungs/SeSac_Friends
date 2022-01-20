@@ -11,9 +11,14 @@ import SnapKit
 
 class OnBoardingCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "OnBoardingCollectionViewCell"
+    
+    
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "testtestestestestest"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont(name: "NotoSansCJKkr-Medium", size: 24)
         return label
     }()
     
@@ -34,21 +39,29 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
         fatalError("error!")
     }
     
+    func setup(_ slide: OnBoardingSlide) {
+        boardingImageView.image = slide.image
+        titleLabel.text = slide.title
+    }
+    
+    
     func setUI() {
         addSubview(titleLabel)
         addSubview(boardingImageView)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(116)
+            make.top.equalToSuperview().offset(50)
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(85)
+//            make.leading.trailing.equalToSuperview().inset(85)
+            make.width.equalTo(280)
             make.height.equalTo(76)
         }
         
         boardingImageView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(56)
-            make.leading.trailing.equalToSuperview().inset(7)
-            make.size.equalTo(360) // 나중에 수정해야함
+            make.centerX.equalToSuperview()
+            make.width.equalTo(360)
+            make.height.equalTo(360)
             make.bottom.equalToSuperview()
         }
     }
