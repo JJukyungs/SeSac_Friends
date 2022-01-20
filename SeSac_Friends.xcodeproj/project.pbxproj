@@ -20,6 +20,10 @@
 		1E40C85827982B62009CB80E /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8572798052A009CB80E /* NotoSansCJKkr-Medium.otf */; };
 		1E40C85927982B64009CB80E /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8562798052A009CB80E /* NotoSansCJKkr-Regular.otf */; };
 		1E40C85A27982C00009CB80E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8122795859A009CB80E /* TestViewController.swift */; };
+		1E40C85E27996B11009CB80E /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C85D27996B11009CB80E /* OnBoardingView.swift */; };
+		1E40C86027998929009CB80E /* OnBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C85F27998929009CB80E /* OnBoardingSlide.swift */; };
+		1E40C86227998985009CB80E /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C86127998985009CB80E /* OnBoardingViewController.swift */; };
+		1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C86327998CC2009CB80E /* OnBoardingCollectionViewCell.swift */; };
 		5043C0669EF9B56BE9BC29C4 /* Pods_SeSac_Friends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,10 @@
 		1E40C8532797F690009CB80E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		1E40C8562798052A009CB80E /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		1E40C8572798052A009CB80E /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		1E40C85D27996B11009CB80E /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		1E40C85F27998929009CB80E /* OnBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSlide.swift; sourceTree = "<group>"; };
+		1E40C86127998985009CB80E /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		1E40C86327998CC2009CB80E /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		74B873DD0B637366C85FC28A /* Pods-SeSac_Friends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.debug.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.debug.xcconfig"; sourceTree = "<group>"; };
 		9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSac_Friends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,6 +85,7 @@
 		1E40C80D2795859A009CB80E /* SeSac_Friends */ = {
 			isa = PBXGroup;
 			children = (
+				1E40C85C27996AB0009CB80E /* Onboarding */,
 				1E40C8552798006C009CB80E /* Font */,
 				1E40C80E2795859A009CB80E /* AppDelegate.swift */,
 				1E40C8102795859A009CB80E /* SceneDelegate.swift */,
@@ -88,7 +97,8 @@
 				1E40C84B2796AD63009CB80E /* UIColor+Extension.swift */,
 				1E40C8512797F03D009CB80E /* UIButton+Extension.swift */,
 				1E40C8532797F690009CB80E /* UIFont+Extension.swift */,
-				1E40C85B27984705009CB80E /* etc */,
+				1E40C81C2795859B009CB80E /* Info.plist */,
+				1E40C84927969F4A009CB80E /* GoogleService-Info.plist */,
 			);
 			path = SeSac_Friends;
 			sourceTree = "<group>";
@@ -102,13 +112,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		1E40C85B27984705009CB80E /* etc */ = {
+		1E40C85C27996AB0009CB80E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				1E40C81C2795859B009CB80E /* Info.plist */,
-				1E40C84927969F4A009CB80E /* GoogleService-Info.plist */,
+				1E40C85D27996B11009CB80E /* OnBoardingView.swift */,
+				1E40C86327998CC2009CB80E /* OnBoardingCollectionViewCell.swift */,
+				1E40C85F27998929009CB80E /* OnBoardingSlide.swift */,
+				1E40C86127998985009CB80E /* OnBoardingViewController.swift */,
 			);
-			path = etc;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		4C9AA2998C723B9F8FA33905 /* Pods */ = {
@@ -248,11 +260,15 @@
 				1E40C8542797F690009CB80E /* UIFont+Extension.swift in Sources */,
 				1E40C850279702C5009CB80E /* PhoneCertificationView.swift in Sources */,
 				1E40C85A27982C00009CB80E /* TestViewController.swift in Sources */,
+				1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */,
+				1E40C85E27996B11009CB80E /* OnBoardingView.swift in Sources */,
+				1E40C86027998929009CB80E /* OnBoardingSlide.swift in Sources */,
 				1E40C84E2796B262009CB80E /* PhoneCertificationViewController.swift in Sources */,
 				1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */,
 				1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */,
 				1E40C84C2796AD63009CB80E /* UIColor+Extension.swift in Sources */,
 				1E40C8522797F03D009CB80E /* UIButton+Extension.swift in Sources */,
+				1E40C86227998985009CB80E /* OnBoardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

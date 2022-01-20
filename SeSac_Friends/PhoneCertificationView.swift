@@ -11,6 +11,9 @@ import UIKit
 
 class PhoneCertificationView: UIView {
     
+
+    
+    
     let mainTextLabl: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -55,6 +58,8 @@ class PhoneCertificationView: UIView {
         addSubview(mainTextLabl)
         addSubview(phoneNumberTextfield)
         addSubview(sendMessageButton)
+       
+        
     }
     
     func setupConstraints() {
@@ -81,5 +86,6 @@ class PhoneCertificationView: UIView {
             make.height.equalTo(48)
         }
         
+      
     }
 }
