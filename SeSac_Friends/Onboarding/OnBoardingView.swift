@@ -15,7 +15,6 @@ class OnBoardingView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
         
@@ -25,15 +24,14 @@ class OnBoardingView: UIView {
     let pageControll: UIPageControl = {
         let pageControll = UIPageControl()
         pageControll.numberOfPages = 3
-        pageControll.pageIndicatorTintColor = UIColor.blackColor
+        pageControll.pageIndicatorTintColor = UIColor.gray5Color
+        pageControll.currentPageIndicatorTintColor = UIColor.blackColor
         return pageControll
     }()
     
-    let startButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .greenColor
-        return button
-    }()
+
+    
+    let startButton = CustomButton(frame: .zero, type: .fill, text: "시작하기")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

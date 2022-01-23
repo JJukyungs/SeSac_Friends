@@ -16,7 +16,7 @@ class PhoneCertificationView: UIView {
     
     let mainTextLabl: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 2
 //        label.font = .systemFont(ofSize: 20)
         label.font = UIFont.Display1_R20
         label.text = "새싹 서비스 이용을 위해 \n 휴대폰 번호를 입력해주세요"
@@ -24,24 +24,17 @@ class PhoneCertificationView: UIView {
         return label
     }()
     
-    let phoneNumberTextfield: UITextField = {
-        let textfield = UITextField()
-        textfield.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
-        textfield.keyboardType = .numberPad
-        return textfield
+
+    let phoneNumberTextfield : CustomTextField = {
+        let phoneTf = CustomTextField(frame: .zero, type: .inactive)
+        phoneTf.textfield.placeholder = "휴대폰번호(-없이 숫자만 입력)"
+        phoneTf.textfield.keyboardType = .numberPad
+        return phoneTf
     }()
     
     
-    // button에 텍스트 필드 활성화될 때 색 변화 그리고 활성화 해줘야함
-    let sendMessageButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.gray6Color
-        button.layer.cornerRadius = 8
-        button.setTitle("인증 문자 받기", for: .normal)
-        button.titleLabel?.font = UIFont.Body3_R14
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
+    // 비활성화 먼저 보여주기
+    let sendMessageButton = CustomButton(frame: .zero, type: .disable, text: "인증 문자 받기")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,7 +52,7 @@ class PhoneCertificationView: UIView {
         addSubview(phoneNumberTextfield)
         addSubview(sendMessageButton)
        
-        
+    
     }
     
     func setupConstraints() {

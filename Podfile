@@ -10,7 +10,7 @@ target 'SeSac_Friends' do
 	pod 'SnapKit', '~> 5.0.0'
 	pod 'RxSwift', '6.5.0'
  	pod 'RxCocoa', '6.5.0'
-	
+	pod 'Toast-Swift', '~> 5.0.1'
   # Pods for SeSac_Friends
 
 end

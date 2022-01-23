@@ -22,7 +22,7 @@ class OnBoardingViewControll: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .lightGray // 추후 삭제
+        view.backgroundColor = .white
         
         setCollcetionView()
         
