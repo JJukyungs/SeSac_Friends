@@ -47,20 +47,27 @@ class CustomButton: UIButton {
             setTitleColor(.blackColor, for: .normal)
             layer.borderWidth = 1
             layer.borderColor = UIColor.greenColor?.cgColor
-            
+            isEnabled = true
+
         case .fill:
             backgroundColor = .greenColor
             setTitleColor(.whiteColor, for: .normal)
+            isEnabled = true
         case .outline:
             backgroundColor = .whiteColor
             layer.borderWidth = 1
             layer.borderColor = UIColor.greenColor?.cgColor
+            isEnabled = true
+
         case .cancel:
             backgroundColor = .gray2Color
             setTitleColor(.blackColor, for: .normal)
+            isEnabled = true
+
         case .disable:
             backgroundColor = .gray6Color
             setTitleColor(.gray3Color, for: .normal)
+            isEnabled = false
         }
     }
     
@@ -69,9 +76,6 @@ class CustomButton: UIButton {
         titleLabel?.font = UIFont.Body3_R14
         clipsToBounds = true
         layer.cornerRadius = 8
-        
-
-        
     }
    
 }

@@ -11,6 +11,8 @@ target 'SeSac_Friends' do
 	pod 'RxSwift', '6.5.0'
  	pod 'RxCocoa', '6.5.0'
 	pod 'Toast-Swift', '~> 5.0.1'
+	pod 'Alamofire', '~> 5.5'
+	pod 'RxAlamofire'
   # Pods for SeSac_Friends
 
 end

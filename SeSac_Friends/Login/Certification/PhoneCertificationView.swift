@@ -34,7 +34,10 @@ class PhoneCertificationView: UIView {
     
     
     // 비활성화 먼저 보여주기
-    let sendMessageButton = CustomButton(frame: .zero, type: .disable, text: "인증 문자 받기")
+    let sendMessageButton: CustomButton = {
+        let bt  = CustomButton(frame: .zero, type: .disable, text: "인증 문자 받기")
+        return bt
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
