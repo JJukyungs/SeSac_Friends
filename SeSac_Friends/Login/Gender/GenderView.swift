@@ -38,7 +38,7 @@ class GenderView: UIView {
     
     // Button 대신 View로 만들어서 터치 이벤트 발생
     let manView: GenderImageView = {
-        let view = GenderImageView()
+        let view = GenderImageView(frame: .zero, type: .notcheck)
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.imageView.image = UIImage(named: "man")
@@ -49,7 +49,7 @@ class GenderView: UIView {
     }()
     
     let womanView: GenderImageView = {
-        let view = GenderImageView()
+        let view = GenderImageView(frame: .zero, type: .notcheck)
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.imageView.image = UIImage(named: "woman")

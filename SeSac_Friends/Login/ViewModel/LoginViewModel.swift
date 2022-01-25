@@ -15,7 +15,7 @@ class LoginViewModel {
     var phoneNumber = Observable("")
     var nohypenNumber = Observable("")
     var nickname = Observable("")
-    var birthday = Observable("")
+    var birthday = Observable(Date.now) // Date 값으로 변경
     var email = Observable("")
     var gender = Observable(2) // 아무것도 선택 안했을 시 2 (21.01.24 변경사항)
     
@@ -116,15 +116,37 @@ class LoginViewModel {
     
     
     // 인증코드 유효성 검사
-    func isValidCode(code: String?) -> Bool {
+    func validCode(code: String?) -> Bool {
         guard code != nil else { return false }
 
         let codeRegex = "([0-9]{6})"
-        let pred = NSPredicate(format: "SELF MATCHES %@", codeRegex)
+        let codeTest = NSPredicate(format: "SELF MATCHES %@", codeRegex)
 
-        return pred.evaluate(with: code)
+        return codeTest.evaluate(with: code)
     }
     
+    
+    // 닉네임 유효성 검사  최소 1자리 이상 최대 10자리
+    func validNickname(nickname: String) -> Void {
+        
+        if nickname.count > 0 && nickname.count <= 10 {
+            isvalidNickname.value = true
+        } else {
+            isvalidNickname.value = false
+        }
+        
+    }
+    
+    // 생년월일 유효성 검사는 VC에서 구현
+    
+    // 이메일 유효성 검사
+    func validEmail(email: String) -> Void {
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        isValidEmial.value = emailTest.evaluate(with: email)
+    }
     
     
    

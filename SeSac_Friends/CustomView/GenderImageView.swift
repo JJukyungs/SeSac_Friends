@@ -8,13 +8,18 @@
 import UIKit
 import SnapKit
 
+enum GenderType {
+    case check
+    case notcheck
+}
+
 
 class GenderImageView: UIView {
     
+    var type: GenderType
     
     let imageView: UIImageView = {
         let img = UIImageView()
-        // 이미지는 여기 말고 다른 GenderView에서
         return img
     }()
     
@@ -28,11 +33,13 @@ class GenderImageView: UIView {
     }()
     
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, type: GenderType) {
+        self.type = type
         super.init(frame: frame)
         
         setupView()
         setupConstraints()
+        setupGenderType(type: type)
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +65,21 @@ class GenderImageView: UIView {
             make.height.equalTo(26)
             make.bottom.equalToSuperview().offset(-14)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    func setupGenderType(type: GenderType) {
+        self.type = type
+        
+        switch self.type {
+            
+        case .check:
+            backgroundColor = .whitegreenColor
+            layer.borderWidth = 0
+        case .notcheck:
+            backgroundColor = .whiteColor
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.gray3Color?.cgColor
         }
     }
 }

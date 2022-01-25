@@ -57,7 +57,7 @@ class InputCertificatinoViewController: UIViewController {
         
         print(LoginViewModel.shared.verificationCode)
         
-        if LoginViewModel.shared.isValidCode(code: LoginViewModel.shared.verificationCode) == false {
+        if LoginViewModel.shared.validCode(code: LoginViewModel.shared.verificationCode) == false {
 
             view.makeToast("6자리 인증번호를 입력해주세요")
             print("test33333")
@@ -116,7 +116,7 @@ class InputCertificatinoViewController: UIViewController {
         
         LoginViewModel.shared.verificationCode = mainView.certificationTextField.textfield.text ?? ""
         
-        if LoginViewModel.shared.isValidCode(code: LoginViewModel.shared.verificationCode) {
+        if LoginViewModel.shared.validCode(code: LoginViewModel.shared.verificationCode) {
             mainView.certificationTextField.setupTfType(type: .succes)
             mainView.certificationTextField.subLabel.text = "유효한 형식입니다."
             mainView.startButton.setupBtType(type: .fill)
