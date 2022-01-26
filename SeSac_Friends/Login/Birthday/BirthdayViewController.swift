@@ -32,6 +32,23 @@ class BirthdayViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         
         
+        
+        
+        LoginViewModel.shared.isValidEmial.bind { valid in
+            if valid {
+                self.mainView.nextButton.setupBtType(type: .fill)
+            }
+        }
+        LoginViewModel.shared.year.bind { year in
+            self.mainView.yearTexfield.textfield.text = year
+        }
+        LoginViewModel.shared.month.bind { month in
+            self.mainView.monthTexfield.textfield.text = month
+        }
+        LoginViewModel.shared.day.bind { day in
+            self.mainView.dayTexfield.textfield.text = day
+        }
+        
     }
     
     
@@ -66,15 +83,15 @@ class BirthdayViewController: UIViewController {
         
         formmater.dateFormat = "yyyy"
         mainView.yearTexfield.textfield.text = formmater.string(from: datePicker.date)
-        print("yyyy : ",datePicker.date)
+        LoginViewModel.shared.year.value = formmater.string(from: datePicker.date)
         
         formmater.dateFormat = "MM"
         mainView.monthTexfield.textfield.text = formmater.string(from: datePicker.date)
-        print("MM : ", datePicker.date)
+        LoginViewModel.shared.month.value = formmater.string(from: datePicker.date)
         
         formmater.dateFormat = "dd"
         mainView.dayTexfield.textfield.text = formmater.string(from: datePicker.date)
-        print("dd : ", datePicker.date)
+        LoginViewModel.shared.day.value = formmater.string(from: datePicker.date)
         
         
         if westernAge() >= 17 {

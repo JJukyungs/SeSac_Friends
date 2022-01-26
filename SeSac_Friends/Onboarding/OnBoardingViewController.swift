@@ -27,6 +27,7 @@ class OnBoardingViewControll: UIViewController {
         setCollcetionView()
         
         slides = [OnBoardingSlide(title: "위치 기반으로 빠르게  주위 친구를 확인", image: UIImage(named: "onboarding_img1")!), OnBoardingSlide(title: "관심사가 같은 친구를  찾을 수 있어요", image: UIImage(named: "onboarding_img2")!), OnBoardingSlide(title: "SeSAC Friends", image: UIImage(named: "Social life-cuate")!) ]
+        
         boardingView.startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
     }
     

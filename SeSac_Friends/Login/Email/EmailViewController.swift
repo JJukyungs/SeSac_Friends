@@ -26,6 +26,18 @@ class EmailViewController: UIViewController {
         mainView.nextButton.addTarget(self, action: #selector(nextbuttonClicked), for: .touchUpInside)
     
         mainView.emailTextfield.textfield.addTarget(self, action: #selector(emailTextfieldChanged), for: .editingChanged)
+        
+        // 닉네임뷰로 다시 되돌아갔을 시 다시 보여주기 위해 bind로 묶어버리깅
+        LoginViewModel.shared.email.bind { email in
+            self.mainView.emailTextfield.textfield.text = email
+        }
+        
+        LoginViewModel.shared.isValidEmial.bind { valid in
+            if valid {
+                self.mainView.nextButton.setupBtType(type: .fill)
+            }
+        }
+        
     }
     
     
