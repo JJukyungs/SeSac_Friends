@@ -41,7 +41,10 @@
 		1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C883279DC173009CB80E /* GenderImageView.swift */; };
 		1E40C88D279DCF67009CB80E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C88C279DCF67009CB80E /* EndPoint.swift */; };
 		1E40C890279E6698009CB80E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C88F279E6698009CB80E /* APIService.swift */; };
-		1E40C892279E6C3B009CB80E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C891279E6C3B009CB80E /* User.swift */; };
+		1E40C892279E6C3B009CB80E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C891279E6C3B009CB80E /* UserInfo.swift */; };
+		1E40C89527A11291009CB80E /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89427A11291009CB80E /* SignUpModel.swift */; };
+		1E40C89827A1687E009CB80E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89727A1687E009CB80E /* HomeView.swift */; };
+		1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89927A17029009CB80E /* HomeViewController.swift */; };
 		5043C0669EF9B56BE9BC29C4 /* Pods_SeSac_Friends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +86,10 @@
 		1E40C883279DC173009CB80E /* GenderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderImageView.swift; sourceTree = "<group>"; };
 		1E40C88C279DCF67009CB80E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		1E40C88F279E6698009CB80E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		1E40C891279E6C3B009CB80E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1E40C891279E6C3B009CB80E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		1E40C89427A11291009CB80E /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		1E40C89727A1687E009CB80E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../../../../../HomeView.swift; sourceTree = "<group>"; };
+		1E40C89927A17029009CB80E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		74B873DD0B637366C85FC28A /* Pods-SeSac_Friends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.debug.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.debug.xcconfig"; sourceTree = "<group>"; };
 		9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSac_Friends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,6 +127,7 @@
 		1E40C80D2795859A009CB80E /* SeSac_Friends */ = {
 			isa = PBXGroup;
 			children = (
+				1E40C89627A1686A009CB80E /* Home */,
 				1E40C885279DCD41009CB80E /* Login */,
 				1E40C85C27996AB0009CB80E /* Onboarding */,
 				1E40C80E2795859A009CB80E /* AppDelegate.swift */,
@@ -252,7 +259,8 @@
 		1E40C88E279DD4E0009CB80E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1E40C891279E6C3B009CB80E /* User.swift */,
+				1E40C891279E6C3B009CB80E /* UserInfo.swift */,
+				1E40C89427A11291009CB80E /* SignUpModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +271,15 @@
 				1E40C86B279D2351009CB80E /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E40C89627A1686A009CB80E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1E40C89727A1687E009CB80E /* HomeView.swift */,
+				1E40C89927A17029009CB80E /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		4C9AA2998C723B9F8FA33905 /* Pods */ = {
@@ -407,14 +424,16 @@
 				1E40C86A279BCD02009CB80E /* CustomTextField.swift in Sources */,
 				1E40C8542797F690009CB80E /* UIFont+Extension.swift in Sources */,
 				1E40C87E279DA524009CB80E /* EmailView.swift in Sources */,
-				1E40C892279E6C3B009CB80E /* User.swift in Sources */,
+				1E40C892279E6C3B009CB80E /* UserInfo.swift in Sources */,
 				1E40C850279702C5009CB80E /* PhoneCertificationView.swift in Sources */,
 				1E40C85A27982C00009CB80E /* TestViewController.swift in Sources */,
 				1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */,
 				1E40C86C279D2351009CB80E /* LoginViewModel.swift in Sources */,
+				1E40C89827A1687E009CB80E /* HomeView.swift in Sources */,
 				1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */,
 				1E40C85E27996B11009CB80E /* OnBoardingView.swift in Sources */,
 				1E40C86027998929009CB80E /* OnBoardingSlide.swift in Sources */,
+				1E40C89527A11291009CB80E /* SignUpModel.swift in Sources */,
 				1E40C87C279DA51D009CB80E /* EmailViewController.swift in Sources */,
 				1E40C87A279D8C6C009CB80E /* BirthdayViewController.swift in Sources */,
 				1E40C84E2796B262009CB80E /* PhoneCertificationViewController.swift in Sources */,
@@ -426,6 +445,7 @@
 				1E40C84C2796AD63009CB80E /* UIColor+Extension.swift in Sources */,
 				1E40C880279DAFE1009CB80E /* GenderView.swift in Sources */,
 				1E40C8522797F03D009CB80E /* CustomButton.swift in Sources */,
+				1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */,
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,
 				1E40C88D279DCF67009CB80E /* EndPoint.swift in Sources */,
 				1E40C86227998985009CB80E /* OnBoardingViewController.swift in Sources */,

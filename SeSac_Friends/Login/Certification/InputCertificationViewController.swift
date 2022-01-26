@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Toast_Swift
 
 
 class InputCertificatinoViewController: UIViewController {
@@ -82,6 +83,41 @@ class InputCertificatinoViewController: UIViewController {
 
 
             // idToken 분기처리 해줘야함 [ 200, 201, 401 ]
+            
+            LoginViewModel.shared.getUserInfo { userInfo, error, statuscode in
+                
+                // API 호출 번호로 분기 처리
+                switch statuscode {
+                case 200:
+                    self.view.makeToast("이미 가입된 회원입니다.")
+                    print("200")
+                case 201:
+                    self.view.makeToast("휴대폰 번호 인증에 성공했습니다.")
+                    print("201")
+                case 401:
+                    print("401")
+                    Auth.auth().currentUser?.getIDTokenForcingRefresh(true) {
+                        idToken, error in
+                        
+                        if let error = error {
+                            self.view.makeToast("에러 발생. 다시 시도해주세요.")
+                            return
+                        }
+                        
+                        if let idToken = idToken {
+                            print("idToken : ", idToken)
+                            UserDefaults.standard.set(idToken, forKey: "idToken")
+                        }
+                        
+                        
+                    }
+                default:
+                    self.view.makeToast("에러코드 :  \(statuscode)")
+                }
+            }
+            
+            
+            
             self.navigationController?.pushViewController(NickNameViewController(), animated: true)
         }
   
@@ -153,16 +189,7 @@ class InputCertificatinoViewController: UIViewController {
         timer -= 1
     }
     
-//    // 인증코드 유효성 검사
-//    func isValidCode(code: String?) -> Bool {
-//        guard code != nil else { return false }
-//
-//        let codeRegex = "([0-9]{6})"
-//        let pred = NSPredicate(format:"SELF MATCHES %@", codeRegex)
-//
-//        return pred.evaluate(with: code)
-//    }
-    
+
     
     
    

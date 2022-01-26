@@ -29,7 +29,7 @@ class NickNameViewController: UIViewController {
     @objc func nextbuttonClicked() {
         print("nextbutton clicked")
         
-        
+        self.view.endEditing(true)
         if LoginViewModel.shared.isvalidNickname.value {
     
             navigationController?.pushViewController(BirthdayViewController(), animated: true)

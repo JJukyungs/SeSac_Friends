@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toast_Swift
+import FirebaseAuth
 
 
 // 마지막 페이지라 이부분에서 회원가입 데이터를 전송을 해줘야함
@@ -43,8 +45,52 @@ class GenderViewController: UIViewController {
         }
         
         
-        // test 용
-//        navigationController?.pushViewController(TestViewController(), animated: false)
+        LoginViewModel.shared.signUpUserInfo { statuscode, error in
+            
+            switch statuscode {
+                
+            case 200:
+                print("회원가입 성공")
+                self.view.makeToast("회원가입에 성공했습니다. \n홈화면으로 전송!")
+                
+                let vc = HomeViewController()
+                
+                DispatchQueue.main.async {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+                    windowScene.windows.first?.makeKeyAndVisible()
+                }
+                
+                
+            case 201:
+                print("이미 가입한 유저입니다.")
+                self.view.makeToast("이미 가입한 유저입니다.")
+                
+            case 202:
+                print("사용할 수 없는 닉네임입니다.")
+                self.view.makeToast("사용할 수 없는 닉네임입니다. /n닉네임을 다시 설정해주세요.")
+                self.backNavgationControllerUsed()
+                self.view.makeToast("사용할 수 없는 닉네임입니다. /n닉네임을 다시 설정해주세요.")
+            case 401:
+                print("토큰갱신 에러")
+                self.view.makeToast("오류 시 앱을 다시 실행해보세요!")
+                
+                
+                
+                
+            default:
+                print("응 오류야~")
+                self.view.makeToast("응 오류야~")
+            }
+        }
+    }
+    
+    // 네비게이션 여러번 pop
+    
+    func backNavgationControllerUsed() {
+        let viewControllers : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        
+        self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: false)
     }
     
     @objc func tapManImageView(_ sender: UITapGestureRecognizer) {

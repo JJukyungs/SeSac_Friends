@@ -33,7 +33,7 @@ class LoginViewModel {
     
     var idToken = ""
     // FCMToken 은 기기별로 다를 수 잇음?
-    var FCMToken = UserDefaults.standard.string(forKey: "FCMToken")
+    var FCMToken = UserDefaults.standard.string(forKey: "FCMToken")!
     
     
     
@@ -151,6 +151,27 @@ class LoginViewModel {
     
    
     
+    // API 연결!!
+    
+    func getUserInfo(completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
+        
+        APIService.getUserInfo(idToken: idToken) { userInfo, error, statuscode in
+            
+            completion(userInfo, error, statuscode)
+        }
+    }
+    
+    
+    func signUpUserInfo(completion: @escaping (Int?, Error?) -> Void) {
+        
+        let signUpModel = signUpModel(phoneNumber: "+82 \(nohypenNumber.value)", FCMtoken: FCMToken, nick: nickname.value, email: email.value, birth: birthday.value, gender: gender.value)
+        
+        
+        APIService.signUpUserInfo(idToken: idToken, model: signUpModel) { statuscode, error in
+            
+            completion(statuscode, error)
+        }
+    }
     
 }
 

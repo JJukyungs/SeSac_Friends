@@ -6,6 +6,7 @@ target 'SeSac_Friends' do
   use_frameworks!
 
 	pod 'Firebase/Auth'
+	pod 'Firebase/Messaging'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SnapKit', '~> 5.0.0'
 	pod 'RxSwift', '6.5.0'
@@ -13,6 +14,7 @@ target 'SeSac_Friends' do
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'Alamofire', '~> 5.5'
 	pod 'RxAlamofire'
+	pod 'SwiftyJSON', '~> 4.0'
   # Pods for SeSac_Friends
 
 end
