@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,10 +19,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let rootVC = OnBoardingViewControll()
         
-        let navigationVC = UINavigationController(rootViewController: rootVC)
-        
-        window?.rootViewController = navigationVC
+//        let navigationVC = UINavigationController(rootViewController: rootVC)
+//
+//        window?.rootViewController = navigationVC
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
+        
+        // status code를 이용해 분기 처리
+        
+      
+            
+            
+        
         
         
     }

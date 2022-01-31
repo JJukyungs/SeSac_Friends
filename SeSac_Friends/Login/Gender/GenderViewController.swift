@@ -35,6 +35,24 @@ class GenderViewController: UIViewController {
         
         mainView.manView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapManImageView(_:))))
         mainView.womanView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapWomanImageView(_:))))
+        
+        LoginViewModel.shared.gender.bind { number in
+            if number != -1{
+                if number != 1 {
+                    self.mainView.manView.setupGenderType(type: .check)
+                    self.mainView.womanView.setupGenderType(type: .notcheck)
+                    self.mainView.nextButton.setupBtType(type: .fill)
+                } else {
+                    self.mainView.womanView.setupGenderType(type: .check)
+                    self.mainView.manView.setupGenderType(type: .notcheck)
+                    self.mainView.nextButton.setupBtType(type: .fill)
+                }
+            } else {
+                self.mainView.manView.setupGenderType(type: .notcheck)
+                self.mainView.womanView.setupGenderType(type: .notcheck)
+                self.mainView.nextButton.setupBtType(type: .fill)
+            }
+        }
     }
     
     
@@ -53,7 +71,7 @@ class GenderViewController: UIViewController {
                 print("회원가입 성공")
                 self.view.makeToast("회원가입에 성공했습니다. \n홈화면으로 전송!")
                 
-                let vc = HomeViewController()
+                let vc = TabBarController()
                 
                 DispatchQueue.main.async {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
@@ -100,26 +118,28 @@ class GenderViewController: UIViewController {
             LoginViewModel.shared.gender.value = 1
             mainView.manView.setupGenderType(type: .check)
             mainView.womanView.setupGenderType(type: .notcheck)
-            mainView.nextButton.setupBtType(type: .fill)
+//            mainView.nextButton.setupBtType(type: .fill)
         } else {
             LoginViewModel.shared.gender.value = -1
             mainView.manView.setupGenderType(type: .notcheck)
-            mainView.nextButton.setupBtType(type: .disable)
+//            mainView.nextButton.setupBtType(type: .disable)
         }
         
         
     }
+    
+    
     @objc func tapWomanImageView(_ sender: UITapGestureRecognizer) {
         
         if LoginViewModel.shared.gender.value != 0 {
             LoginViewModel.shared.gender.value = 0
             mainView.manView.setupGenderType(type: .notcheck)
             mainView.womanView.setupGenderType(type: .check)
-            mainView.nextButton.setupBtType(type: .fill)
+//            mainView.nextButton.setupBtType(type: .fill)
         } else {
             LoginViewModel.shared.gender.value = -1
             mainView.womanView.setupGenderType(type: .notcheck)
-            mainView.nextButton.setupBtType(type: .disable)
+//            mainView.nextButton.setupBtType(type: .disable)
         }
         
     }

@@ -1,26 +1,27 @@
 //
-//  HomeViewController.swift
+//  ProfileViewController.swift
 //  SeSac_Friends
 //
-//  Created by 이주경 on 2022/01/26.
+//  Created by 이주경 on 2022/01/27.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
-    let mainView = HomeView()
-    
+    let mainView = ProfileView()
     
     override func loadView() {
         self.view = mainView
+
+        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        title = "내 정보"
+        view.backgroundColor = .white
+        // Do any additional setup after loading the view.
     }
     
 
