@@ -44,7 +44,7 @@
 		1E40C892279E6C3B009CB80E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C891279E6C3B009CB80E /* UserInfo.swift */; };
 		1E40C89527A11291009CB80E /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89427A11291009CB80E /* SignUpModel.swift */; };
 		1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89927A17029009CB80E /* HomeViewController.swift */; };
-		1E40C89D27A299E3009CB80E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89C27A299E3009CB80E /* TabBarController.swift */; };
+		1E40C89D27A299E3009CB80E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89C27A299E3009CB80E /* MainTabBarController.swift */; };
 		1E40C89F27A2CC28009CB80E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C89E27A2CC28009CB80E /* HomeView.swift */; };
 		1E40C8A427A2CDDC009CB80E /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8A327A2CDDC009CB80E /* ShopViewController.swift */; };
 		1E40C8A627A2CDED009CB80E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8A527A2CDED009CB80E /* FriendsViewController.swift */; };
@@ -98,7 +98,7 @@
 		1E40C891279E6C3B009CB80E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1E40C89427A11291009CB80E /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		1E40C89927A17029009CB80E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		1E40C89C27A299E3009CB80E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		1E40C89C27A299E3009CB80E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1E40C89E27A2CC28009CB80E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1E40C8A327A2CDDC009CB80E /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		1E40C8A527A2CDED009CB80E /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				1E40C8A127A2CD84009CB80E /* Friends */,
 				1E40C8A027A2CD79009CB80E /* Shop */,
 				1E40C89627A1686A009CB80E /* Home */,
-				1E40C89C27A299E3009CB80E /* TabBarController.swift */,
+				1E40C89C27A299E3009CB80E /* MainTabBarController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 				1E40C84C2796AD63009CB80E /* UIColor+Extension.swift in Sources */,
 				1E40C8A627A2CDED009CB80E /* FriendsViewController.swift in Sources */,
 				1E40C880279DAFE1009CB80E /* GenderView.swift in Sources */,
-				1E40C89D27A299E3009CB80E /* TabBarController.swift in Sources */,
+				1E40C89D27A299E3009CB80E /* MainTabBarController.swift in Sources */,
 				1E40C8522797F03D009CB80E /* CustomButton.swift in Sources */,
 				1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */,
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,
