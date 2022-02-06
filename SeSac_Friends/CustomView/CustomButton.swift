@@ -46,7 +46,7 @@ class CustomButton: UIButton {
             backgroundColor = .whiteColor
             setTitleColor(.blackColor, for: .normal)
             layer.borderWidth = 1
-            layer.borderColor = UIColor.greenColor?.cgColor
+            layer.borderColor = UIColor.gray6Color?.cgColor
             isEnabled = true
 
         case .fill:

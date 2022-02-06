@@ -91,9 +91,9 @@ class InputCertificatinoViewController: UIViewController {
                 case 200:
                     self.view.makeToast("이미 가입된 회원입니다.")
                     print("200")
-                case 201:
+                case 406:
                     self.view.makeToast("휴대폰 번호 인증에 성공했습니다.")
-                    print("201")
+                    print("406")
                 case 401:
                     print("401")
                     Auth.auth().currentUser?.getIDTokenForcingRefresh(true) {

@@ -65,6 +65,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - RangeSeekSlider (1.8.0)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
   - RxAlamofire/Core (6.1.1):
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Messaging
   - IQKeyboardManagerSwift
+  - RangeSeekSlider
   - RxAlamofire
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
@@ -107,6 +109,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
+    - RangeSeekSlider
     - RxAlamofire
     - RxCocoa
     - RxRelay
@@ -129,6 +132,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -137,6 +141,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: c0693551245fbe93b92f0adf25d1495cbbb087c0
+PODFILE CHECKSUM: 95bdbc74d1032a29453c450381bfb06d81b0931e
 
 COCOAPODS: 1.11.2

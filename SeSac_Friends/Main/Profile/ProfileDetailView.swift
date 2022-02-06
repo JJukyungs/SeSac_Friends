@@ -1,37 +1,35 @@
 //
-//  ProfileView.swift
+//  ProfileDetailView.swift
 //  SeSac_Friends
 //
-//  Created by 이주경 on 2022/01/27.
+//  Created by 이주경 on 2022/02/03.
 //
 
 import UIKit
 import SnapKit
 
 
-class ProfileView: UIView {
+class ProfileDetailView: UIView {
+    
+    
     
     var tableView = UITableView()
     
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
+        
         setupView()
         setupConstraints()
-      
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("error")
     }
     
-    
     func setupView() {
         addSubview(tableView)
+        
     }
     
     func setupConstraints() {
@@ -40,7 +38,10 @@ class ProfileView: UIView {
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-250)
+            make.bottom.equalToSuperview()
         }
+        
     }
 }
+
+

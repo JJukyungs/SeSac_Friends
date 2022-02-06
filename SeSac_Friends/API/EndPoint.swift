@@ -19,6 +19,7 @@ enum EndPoint {
     case getMyUserInfo
     case postMyUserInfo
     case withdrawSignUp // 회원탈퇴
+    case updateMyPage
 }
 
 
@@ -40,6 +41,8 @@ extension EndPoint {
             return .makeEndPoint("user")
         case .withdrawSignUp:
             return .makeEndPoint("user/withdraw")
+        case .updateMyPage:
+            return .makeEndPoint("update/mypage")
         }
     }
 }

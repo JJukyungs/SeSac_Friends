@@ -54,6 +54,18 @@
 		1E40C8AE27A2D9B7009CB80E /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8AD27A2D9B7009CB80E /* ShopView.swift */; };
 		1E40C8B227A2FF04009CB80E /* ProfileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8B127A2FF04009CB80E /* ProfileHeaderTableViewCell.swift */; };
 		1E40C8B427A7D237009CB80E /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8B327A7D237009CB80E /* NoticeTableViewCell.swift */; };
+		1E40C8B727AAC570009CB80E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8B627AAC570009CB80E /* ProfileViewModel.swift */; };
+		1E40C8B927AAE6D7009CB80E /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8B827AAE6D7009CB80E /* ProfileDetailViewController.swift */; };
+		1E40C8BB27AAF6DD009CB80E /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8BA27AAF6DD009CB80E /* ProfileDetailView.swift */; };
+		1E40C8BD27AAFCD8009CB80E /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8BC27AAFCD8009CB80E /* ProfileImageView.swift */; };
+		1E40C8C027AC19D5009CB80E /* GenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8BF27AC19D5009CB80E /* GenderTableViewCell.swift */; };
+		1E40C8C227AC5380009CB80E /* BackgroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8C127AC5380009CB80E /* BackgroundTableViewCell.swift */; };
+		1E40C8C427ACF4EE009CB80E /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8C327ACF4EE009CB80E /* ToggleView.swift */; };
+		1E40C8C627AD15BF009CB80E /* HobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8C527AD15BF009CB80E /* HobbyTableViewCell.swift */; };
+		1E40C8C827AD21C9009CB80E /* PhoneSearchValidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8C727AD21C9009CB80E /* PhoneSearchValidTableViewCell.swift */; };
+		1E40C8CA27AD2550009CB80E /* AgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8C927AD2550009CB80E /* AgeTableViewCell.swift */; };
+		1E40C8CC27AE736A009CB80E /* UpdateMyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8CB27AE736A009CB80E /* UpdateMyPageModel.swift */; };
+		1E40C8CE27AFAE07009CB80E /* WithdrawTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8CD27AFAE07009CB80E /* WithdrawTableViewCell.swift */; };
 		5043C0669EF9B56BE9BC29C4 /* Pods_SeSac_Friends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +120,18 @@
 		1E40C8AD27A2D9B7009CB80E /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		1E40C8B127A2FF04009CB80E /* ProfileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		1E40C8B327A7D237009CB80E /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8B627AAC570009CB80E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1E40C8B827AAE6D7009CB80E /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		1E40C8BA27AAF6DD009CB80E /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		1E40C8BC27AAFCD8009CB80E /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		1E40C8BF27AC19D5009CB80E /* GenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8C127AC5380009CB80E /* BackgroundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8C327ACF4EE009CB80E /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		1E40C8C527AD15BF009CB80E /* HobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8C727AD21C9009CB80E /* PhoneSearchValidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSearchValidTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8C927AD2550009CB80E /* AgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeTableViewCell.swift; sourceTree = "<group>"; };
+		1E40C8CB27AE736A009CB80E /* UpdateMyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPageModel.swift; sourceTree = "<group>"; };
+		1E40C8CD27AFAE07009CB80E /* WithdrawTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawTableViewCell.swift; sourceTree = "<group>"; };
 		74B873DD0B637366C85FC28A /* Pods-SeSac_Friends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.debug.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.debug.xcconfig"; sourceTree = "<group>"; };
 		9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSac_Friends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,6 +173,7 @@
 				1E40C885279DCD41009CB80E /* Login */,
 				1E40C85C27996AB0009CB80E /* Onboarding */,
 				1E40C80E2795859A009CB80E /* AppDelegate.swift */,
+				1E40C866279B2F4F009CB80E /* CustomView */,
 				1E40C8102795859A009CB80E /* SceneDelegate.swift */,
 				1E40C8122795859A009CB80E /* TestViewController.swift */,
 				1E40C86F279D2D47009CB80E /* Observable.swift */,
@@ -157,7 +182,6 @@
 				1E40C88E279DD4E0009CB80E /* Model */,
 				1E40C88B279DCF3F009CB80E /* API */,
 				1E40C8552798006C009CB80E /* Font */,
-				1E40C866279B2F4F009CB80E /* CustomView */,
 				1E40C865279B2F2E009CB80E /* Extension */,
 				1E40C81C2795859B009CB80E /* Info.plist */,
 				1E40C84927969F4A009CB80E /* GoogleService-Info.plist */,
@@ -201,6 +225,8 @@
 				1E40C883279DC173009CB80E /* GenderImageView.swift */,
 				1E40C8512797F03D009CB80E /* CustomButton.swift */,
 				1E40C869279BCD02009CB80E /* CustomTextField.swift */,
+				1E40C8BC27AAFCD8009CB80E /* ProfileImageView.swift */,
+				1E40C8C327ACF4EE009CB80E /* ToggleView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -279,6 +305,7 @@
 			children = (
 				1E40C891279E6C3B009CB80E /* UserInfo.swift */,
 				1E40C89427A11291009CB80E /* SignUpModel.swift */,
+				1E40C8CB27AE736A009CB80E /* UpdateMyPageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +330,7 @@
 		1E40C89B27A299CD009CB80E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1E40C8B527AAC443009CB80E /* ViewModel */,
 				1E40C8A227A2CD8F009CB80E /* Profile */,
 				1E40C8A127A2CD84009CB80E /* Friends */,
 				1E40C8A027A2CD79009CB80E /* Shop */,
@@ -333,12 +361,36 @@
 		1E40C8A227A2CD8F009CB80E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1E40C8BE27AC1982009CB80E /* MyInfo */,
 				1E40C8A727A2CE07009CB80E /* ProfileViewController.swift */,
 				1E40C8A927A2D95E009CB80E /* ProfileView.swift */,
 				1E40C8B127A2FF04009CB80E /* ProfileHeaderTableViewCell.swift */,
 				1E40C8B327A7D237009CB80E /* NoticeTableViewCell.swift */,
+				1E40C8BA27AAF6DD009CB80E /* ProfileDetailView.swift */,
+				1E40C8B827AAE6D7009CB80E /* ProfileDetailViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		1E40C8B527AAC443009CB80E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E40C8B627AAC570009CB80E /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E40C8BE27AC1982009CB80E /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1E40C8BF27AC19D5009CB80E /* GenderTableViewCell.swift */,
+				1E40C8C527AD15BF009CB80E /* HobbyTableViewCell.swift */,
+				1E40C8C127AC5380009CB80E /* BackgroundTableViewCell.swift */,
+				1E40C8C727AD21C9009CB80E /* PhoneSearchValidTableViewCell.swift */,
+				1E40C8C927AD2550009CB80E /* AgeTableViewCell.swift */,
+				1E40C8CD27AFAE07009CB80E /* WithdrawTableViewCell.swift */,
+			);
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 		4C9AA2998C723B9F8FA33905 /* Pods */ = {
@@ -481,30 +533,41 @@
 				1E40C86E279D24A7009CB80E /* String+Extension.swift in Sources */,
 				1E40C882279DAFEC009CB80E /* GenderViewController.swift in Sources */,
 				1E40C89F27A2CC28009CB80E /* HomeView.swift in Sources */,
+				1E40C8CC27AE736A009CB80E /* UpdateMyPageModel.swift in Sources */,
+				1E40C8C427ACF4EE009CB80E /* ToggleView.swift in Sources */,
 				1E40C86A279BCD02009CB80E /* CustomTextField.swift in Sources */,
 				1E40C8542797F690009CB80E /* UIFont+Extension.swift in Sources */,
 				1E40C87E279DA524009CB80E /* EmailView.swift in Sources */,
+				1E40C8C627AD15BF009CB80E /* HobbyTableViewCell.swift in Sources */,
 				1E40C892279E6C3B009CB80E /* UserInfo.swift in Sources */,
 				1E40C850279702C5009CB80E /* PhoneCertificationView.swift in Sources */,
+				1E40C8CA27AD2550009CB80E /* AgeTableViewCell.swift in Sources */,
 				1E40C85A27982C00009CB80E /* TestViewController.swift in Sources */,
+				1E40C8C027AC19D5009CB80E /* GenderTableViewCell.swift in Sources */,
 				1E40C8AC27A2D985009CB80E /* FriendsView.swift in Sources */,
 				1E40C8A427A2CDDC009CB80E /* ShopViewController.swift in Sources */,
 				1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */,
 				1E40C86C279D2351009CB80E /* LoginViewModel.swift in Sources */,
+				1E40C8BD27AAFCD8009CB80E /* ProfileImageView.swift in Sources */,
 				1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */,
 				1E40C8AA27A2D95E009CB80E /* ProfileView.swift in Sources */,
 				1E40C85E27996B11009CB80E /* OnBoardingView.swift in Sources */,
 				1E40C86027998929009CB80E /* OnBoardingSlide.swift in Sources */,
 				1E40C89527A11291009CB80E /* SignUpModel.swift in Sources */,
+				1E40C8CE27AFAE07009CB80E /* WithdrawTableViewCell.swift in Sources */,
 				1E40C87C279DA51D009CB80E /* EmailViewController.swift in Sources */,
 				1E40C87A279D8C6C009CB80E /* BirthdayViewController.swift in Sources */,
 				1E40C8B427A7D237009CB80E /* NoticeTableViewCell.swift in Sources */,
 				1E40C8B227A2FF04009CB80E /* ProfileHeaderTableViewCell.swift in Sources */,
+				1E40C8C227AC5380009CB80E /* BackgroundTableViewCell.swift in Sources */,
+				1E40C8B927AAE6D7009CB80E /* ProfileDetailViewController.swift in Sources */,
 				1E40C84E2796B262009CB80E /* PhoneCertificationViewController.swift in Sources */,
 				1E40C868279B95B1009CB80E /* InputCertificationView.swift in Sources */,
 				1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */,
+				1E40C8B727AAC570009CB80E /* ProfileViewModel.swift in Sources */,
 				1E40C870279D2D47009CB80E /* Observable.swift in Sources */,
 				1E40C878279D8C5F009CB80E /* BirthdayView.swift in Sources */,
+				1E40C8BB27AAF6DD009CB80E /* ProfileDetailView.swift in Sources */,
 				1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */,
 				1E40C84C2796AD63009CB80E /* UIColor+Extension.swift in Sources */,
 				1E40C8A627A2CDED009CB80E /* FriendsViewController.swift in Sources */,
@@ -515,6 +578,7 @@
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,
 				1E40C8A827A2CE07009CB80E /* ProfileViewController.swift in Sources */,
 				1E40C88D279DCF67009CB80E /* EndPoint.swift in Sources */,
+				1E40C8C827AD21C9009CB80E /* PhoneSearchValidTableViewCell.swift in Sources */,
 				1E40C8AE27A2D9B7009CB80E /* ShopView.swift in Sources */,
 				1E40C86227998985009CB80E /* OnBoardingViewController.swift in Sources */,
 			);

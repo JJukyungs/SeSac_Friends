@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let rootVC = OnBoardingViewControll()
+        let rootVC = MainTabBarController()
         
 //        let navigationVC = UINavigationController(rootViewController: rootVC)
 //

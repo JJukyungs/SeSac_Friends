@@ -16,7 +16,7 @@ class APIService {
         
         let headers = ["idtoken" : idToken] as HTTPHeaders
         
-        AF.request(EndPoint.getMyUserInfo.url.absoluteString, method: .get, parameters: nil, headers: headers).responseDecodable(of: UserInfo.self) { response in
+        AF.request(EndPoint.getMyUserInfo.url.absoluteString, method: .get, headers: headers).responseDecodable(of: UserInfo.self) { response in
             
             let statusCode = response.response?.statusCode
             
@@ -39,7 +39,7 @@ class APIService {
     
     static func signUpUserInfo(idToken: String, model: signUpModel, completion: @escaping (Int?, Error?) -> Void ) {
         
-        let headers = ["idtoken" : idToken, "Content-Type" : "application/x-www-form-urlencoded "] as HTTPHeaders
+        let headers = ["idtoken" : idToken, "Content-Type" : "application/x-www-form-urlencoded"] as HTTPHeaders
         
         
         let signUpParameters: Parameters = [
@@ -74,6 +74,24 @@ class APIService {
     }
     
     
+    // myPage update
     
+    static func updateMyPage(idToken: String, model: UpdateMyPageModel, completion: @escaping (Int?)-> Void) {
+        
+        let headers = ["idtoken": idToken, "Content-Type" : "application/x-www-form-urlencoded "] as HTTPHeaders
+        
+        let updateParameter: Parameters = [
+            "searchable" : model.searchable,
+            "ageMin" : model.ageMin,
+            "ageMax" : model.ageMax,
+            "gender" : model.gender,
+            "hobby" : model.hobby
+        ]
+        
+        AF.request(EndPoint.updateMyPage.url.absoluteString, method: .post, parameters: updateParameter, headers: headers).responseString { response in
+            
+            completion(response.response?.statusCode)
+        }
+    }
     
 }

@@ -15,6 +15,8 @@ target 'SeSac_Friends' do
 	pod 'Alamofire', '~> 5.5'
 	pod 'RxAlamofire'
 	pod 'SwiftyJSON', '~> 4.0'
+	pod 'RangeSeekSlider'
+	
   # Pods for SeSac_Friends
 
 end
