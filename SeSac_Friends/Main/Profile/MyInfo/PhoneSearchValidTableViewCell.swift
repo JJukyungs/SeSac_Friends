@@ -12,6 +12,8 @@ class PhoneSearchValidTableViewCell: UITableViewCell {
     
     static let identifier = "PhoneSearchValidTableViewCell"
     
+    var searchValidSwitchAction: (() -> ())?
+    
     let validLabel: UILabel = {
         let label = UILabel()
         label.text = "내 번호 검색 허용"
@@ -35,12 +37,19 @@ class PhoneSearchValidTableViewCell: UITableViewCell {
         setupView()
         setupConstraints()
         
+        validSwitch.addTarget(self, action: #selector(switchAction), for: .valueChanged)
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("error")
     }
+    
+    @objc func switchAction() {
+        searchValidSwitchAction?()
+        
+    }
+    
     
     func setupView() {
         addSubview(validLabel)
@@ -60,3 +69,6 @@ class PhoneSearchValidTableViewCell: UITableViewCell {
         }
     }
 }
+
+
+

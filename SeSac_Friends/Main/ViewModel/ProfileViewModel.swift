@@ -23,9 +23,9 @@ class ProfileViewModel {
     var userInfo: Observable<UserInfo> = Observable(UserInfo(id: "", v: 0, uid: "", phoneNumber: "", email: "", socketid: "", fcMtoken: "", nick: "", birth: "", gender: 0, hobby: "", comment: [], reputation: [0], sesac: 0, sesacCollection: [0], background: 0, backgroundCollection: [0], purchaseToken: [], transactionID: [], reviewedBefore: [], reportedNum: 0, reportedUser: [], dodgepenalty: 0, dodgepenaltyGetAt: "", dodgeNum: 0, dodgeNumGetAt: "", ageMin: 0, ageMax: 0, searchable: 0, createdAt: ""))
     
     var nick = Observable("")
-    var ageMin = Observable(0)
-    var ageMax = Observable(0)
-    var gender = Observable(0)
+    var ageMin = Observable(18)
+    var ageMax = Observable(65)
+    var gender = Observable(-1)
     var hobby = Observable("")
     var searchable = Observable(1)
     

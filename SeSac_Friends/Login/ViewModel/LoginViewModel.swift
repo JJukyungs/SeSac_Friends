@@ -17,7 +17,7 @@ class LoginViewModel {
     var nickname = Observable("")
     var birthday = Observable(Date.now) // Date 값으로 변경
     var email = Observable("")
-    var gender = Observable(2) // 아무것도 선택 안했을 시 2 (21.01.24 변경사항)
+    var gender = Observable(-1) // 아무것도 선택 안했을 시 2 (21.01.24 변경사항)
     var year = Observable("")
     var month = Observable("")
     var day = Observable("")

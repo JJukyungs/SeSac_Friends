@@ -38,7 +38,7 @@ class HobbyTableViewCell: UITableViewCell {
         setupView()
         setupConstraints()
         
-        self.hobbyTextfiled.textfield.addTarget(self, action: #selector(hobbyTextfieldValueChange), for: .valueChanged)
+        self.hobbyTextfiled.textfield.addTarget(self, action: #selector(hobbyTextfieldValueChange), for: .editingChanged)
         
     }
     

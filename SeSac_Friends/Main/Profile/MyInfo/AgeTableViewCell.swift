@@ -13,6 +13,8 @@ class AgeTableViewCell: UITableViewCell {
     
     static let identifier = "AgeTableViewCell"
     
+    var ageSliderAction: (() -> ())?
+    
     lazy var ageLabel: UILabel = {
         let label = UILabel()
         label.text = "상대방 연령대"
@@ -57,13 +59,22 @@ class AgeTableViewCell: UITableViewCell {
         
         setupView()
         setupConstraints()
+//        doubleSlider.delegate = self
         
+//        doubleSlider.addTarget(self, action: #selector(rangeSeekSlider(doubleSlider, didChange: doubleSlider.minValue, maxValue: doubleSlider.maxValue)), for: .valueChanged)
+        
+        doubleSlider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
     }
     
     required init?(coder: NSCoder) {
         fatalError("error")
     }
     
+    
+    
+    @objc func sliderValueChanged() {
+        ageSliderAction?()
+    }
     
     func setupView() {
         addSubview(ageLabel)
@@ -95,3 +106,15 @@ class AgeTableViewCell: UITableViewCell {
       
     }
 }
+
+
+//extension AgeTableViewCell: RangeSeekSliderDelegate {
+//
+//    func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+//
+//        self.doubleSlider.minValue = minValue
+//        self.doubleSlider.maxValue = maxValue
+//
+//        self.changeLabel.text = "\(Int(minValue)) - \(Int(maxValue))"
+//    }
+//}

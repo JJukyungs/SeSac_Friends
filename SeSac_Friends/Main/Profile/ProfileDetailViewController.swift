@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RangeSeekSlider
+import FirebaseAuth
 
 
 class ProfileDetailVeiwController: UIViewController {
@@ -24,9 +26,8 @@ class ProfileDetailVeiwController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.main.async {
-            ProfileViewModel.shared.getUserInfo { userinfo, error, statuscode in
-            }
+        ProfileViewModel.shared.userInfo.bind { userinfo in
+            self.mainView.tableView.reloadData()
         }
     }
     
@@ -43,17 +44,17 @@ class ProfileDetailVeiwController: UIViewController {
             ProfileViewModel.shared.updateData()
             self.mainView.tableView.reloadData()
         }
-        print("ViewDidLoad : ", ProfileViewModel.shared.userInfo.value)
-        print("Gender : ", ProfileViewModel.shared.gender.value)
-        
+       
         title = "정보 관리"
         view.backgroundColor = .white
         
-        print("----------")
-        print(ProfileViewModel.shared.userInfo.value.nick)
-        print("----------")
-        
+       
         setupTableView()
+        
+        let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveBarButtonClicked))
+        self.navigationItem.rightBarButtonItem = saveBarButton
+        saveBarButton.tintColor = .blackColor
+        
     }
     
     func setupTableView() {
@@ -76,6 +77,45 @@ class ProfileDetailVeiwController: UIViewController {
         mainView.tableView.register(AgeTableViewCell.self, forCellReuseIdentifier: AgeTableViewCell.identifier)
        
         mainView.tableView.register(WithdrawTableViewCell.self, forCellReuseIdentifier: WithdrawTableViewCell.identifier)
+    }
+    
+    
+    @objc func saveBarButtonClicked() {
+        
+        
+        let updateMypageModel = UpdateMyPageModel(searchable: ProfileViewModel.shared.searchable.value, ageMin: ProfileViewModel.shared.ageMin.value, ageMax: ProfileViewModel.shared.ageMax.value, gender: ProfileViewModel.shared.gender.value, hobby: ProfileViewModel.shared.hobby.value)
+        
+        print("입력 잘 왓나 확인 : ", updateMypageModel)
+        
+        ProfileViewModel.shared.updateMyPage(model: updateMypageModel) { statuscode in
+            
+            switch statuscode {
+                
+            case 200:
+                self.view.makeToast("수정 완료")
+            
+            case 401:
+                self.view.makeToast("토큰이 완료되어 갱신 중입니다.")
+                
+                Auth.auth().currentUser?.getIDTokenForcingRefresh(true) {
+                    idToken, error in
+                    
+                    if let error = error {
+                        self.view.makeToast("에러 발생. 다시 시도해주세요.")
+                        return
+                    }
+                    
+                    if let idToken = idToken {
+                        print("idToken : ", idToken)
+                        UserDefaults.standard.set(idToken, forKey: "idToken")
+                    }
+                }
+                
+            default:
+                self.view.makeToast("수정 실패! 다시 시도해주세요")
+                print("error code : ", statuscode)
+            }
+        }
     }
     
     
@@ -102,6 +142,9 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BackgroundTableViewCell.identifier, for: indexPath) as? BackgroundTableViewCell else { return UITableViewCell() }
                 
+            cell.contentView.isUserInteractionEnabled = false
+            cell.selectionStyle = .none
+            
             cell.toggleView.titleLabel.text = LoginViewModel.shared.nickname.value
             
             return cell
@@ -112,6 +155,7 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
             
             // 이거 하나때문에 2시간을 태워????
             cell.contentView.isUserInteractionEnabled = false
+            cell.selectionStyle = .none
             
             if ProfileViewModel.shared.gender.value != -1 {
                 
@@ -123,14 +167,29 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
                     cell.womanButton.setupBtType(type: .inactive)
                 }
                 
+            } else {
+                cell.manButton.setupBtType(type: .inactive)
+                cell.womanButton.setupBtType(type: .inactive)
             }
             
             cell.manButtonClickAction = {
-                print("cell manButton Click")
+                
+                if ProfileViewModel.shared.gender.value != 1 {
+                    ProfileViewModel.shared.gender.value = 1
+                    
+                    cell.manButton.setupBtType(type: .fill)
+                    cell.womanButton.setupBtType(type: .inactive)
+                }
             }
             
             cell.womanButtonClickAction = {
-                print("cell womanButton Click")
+                
+                if ProfileViewModel.shared.gender.value != 0 {
+                    ProfileViewModel.shared.gender.value = 0
+                    
+                    cell.manButton.setupBtType(type: .inactive)
+                    cell.womanButton.setupBtType(type: .fill)
+                }
             }
             
             return cell
@@ -139,10 +198,11 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HobbyTableViewCell.identifier, for: indexPath) as? HobbyTableViewCell else { return UITableViewCell() }
                 
             cell.contentView.isUserInteractionEnabled = false
+            cell.selectionStyle = .none
             
             cell.hobbyTextfiledAction = {
                 ProfileViewModel.shared.hobby.value = cell.hobbyTextfiled.textfield.text ?? ""
-                print(ProfileViewModel.shared.hobby.value)
+//                print(ProfileViewModel.shared.hobby.value)
             }
             
             return cell
@@ -150,14 +210,50 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PhoneSearchValidTableViewCell.identifier, for: indexPath) as? PhoneSearchValidTableViewCell else { return UITableViewCell() }
             
+            cell.contentView.isUserInteractionEnabled = false
             cell.selectionStyle = .none
+            
+            cell.searchValidSwitchAction = {
+                if cell.validSwitch.isOn {
+                    ProfileViewModel.shared.searchable.value = 1
+                    print(ProfileViewModel.shared.searchable.value)
+                } else {
+                    ProfileViewModel.shared.searchable.value = 0
+                    print(ProfileViewModel.shared.searchable.value)
+                }
+            }
             
             return cell
             
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AgeTableViewCell.identifier, for: indexPath) as? AgeTableViewCell else { return UITableViewCell() }
                 
+            cell.contentView.isUserInteractionEnabled = false
+            cell.selectionStyle = .none
            
+            cell.doubleSlider.delegate = self
+            
+            
+            
+            
+            ProfileViewModel.shared.ageMin.bind { value in
+                cell.changeLabel.text = "\(ProfileViewModel.shared.ageMin.value) - \(ProfileViewModel.shared.ageMax.value)"
+            }
+            
+            ProfileViewModel.shared.ageMax.bind { value in
+                cell.changeLabel.text = "\(ProfileViewModel.shared.ageMin.value) - \(ProfileViewModel.shared.ageMax.value)"
+            }
+            
+//            cell.ageSliderAction = {
+//                ProfileViewModel.shared.ageMin.value = Int(cell.doubleSlider.minValue)
+//                ProfileViewModel.shared.ageMax.value = Int(cell.doubleSlider.maxValue)
+//
+//                print("minValue :", cell.doubleSlider.minValue)
+//                print("maxValue :", cell.doubleSlider.maxValue)
+                
+//                cell.changeLabel.text = "\(ProfileViewModel.shared.ageMin.value) - \(ProfileViewModel.shared.ageMax.value)"
+                
+//            }
             
             return cell
             
@@ -165,7 +261,9 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
             
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: WithdrawTableViewCell.identifier, for: indexPath) as? WithdrawTableViewCell else { return UITableViewCell() }
-                
+            
+            cell.selectionStyle = .none
+            // didselect에서 구현
             
             
             return cell
@@ -194,4 +292,15 @@ extension ProfileDetailVeiwController: UITableViewDelegate,UITableViewDataSource
     }
     
     
+}
+
+extension ProfileDetailVeiwController: RangeSeekSliderDelegate {
+    
+    func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        
+        ProfileViewModel.shared.ageMin.value = Int(minValue)
+        ProfileViewModel.shared.ageMax.value = Int(maxValue)
+        print(ProfileViewModel.shared.ageMin.value)
+        print(ProfileViewModel.shared.ageMax.value)
+    }
 }

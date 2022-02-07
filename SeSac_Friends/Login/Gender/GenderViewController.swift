@@ -38,7 +38,7 @@ class GenderViewController: UIViewController {
         
         LoginViewModel.shared.gender.bind { number in
             if number != -1{
-                if number != 1 {
+                if number == 1 {
                     self.mainView.manView.setupGenderType(type: .check)
                     self.mainView.womanView.setupGenderType(type: .notcheck)
                     self.mainView.nextButton.setupBtType(type: .fill)
@@ -75,7 +75,9 @@ class GenderViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+//                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+                    windowScene.windows.first?.rootViewController = vc
+
                     windowScene.windows.first?.makeKeyAndVisible()
                 }
                 
