@@ -14,6 +14,12 @@ class HomeView: UIView {
     
     let mapView = MKMapView()
     
+    let centerPin: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "map_marker")
+        
+        return img
+    }()
     
     let stackView: UIStackView = {
         let stack = UIStackView()
@@ -21,6 +27,8 @@ class HomeView: UIView {
         stack.distribution = .fillEqually
         stack.clipsToBounds = true
         stack.layer.cornerRadius = 8
+        stack.layer.borderWidth = 1
+        stack.layer.borderColor = UIColor.gray5Color?.cgColor
         return stack
     }()
     
@@ -29,18 +37,17 @@ class HomeView: UIView {
         bt.setTitle("남자", for: .normal)
         bt.titleLabel?.text = "남자"
         bt.titleLabel?.font = UIFont.Title3_M14
-        bt.titleLabel?.textColor = .blackColor
-        bt.backgroundColor = .white
+        bt.setTitleColor(.blackColor, for: .normal)
+        bt.backgroundColor = .whiteColor
         return bt
     }()
 
     let womanButton: UIButton = {
         let bt = UIButton()
         bt.setTitle("여자", for: .normal)
-        bt.titleLabel?.text = "여자"
+        bt.setTitleColor(.blackColor, for: .normal)
         bt.titleLabel?.font = UIFont.Title3_M14
-        bt.titleLabel?.textColor = .blackColor
-        bt.backgroundColor = .white
+        bt.backgroundColor = .whiteColor
         return bt
     }()
     
@@ -48,7 +55,7 @@ class HomeView: UIView {
         let bt = UIButton()
         bt.setTitle("전체", for: .normal)
         bt.titleLabel?.font = UIFont.Title3_M14
-        bt.titleLabel?.textColor = .blackColor
+        bt.setTitleColor(.blackColor, for: .normal)
         bt.backgroundColor = .greenColor
         return bt
     }()
@@ -56,6 +63,12 @@ class HomeView: UIView {
     let gpsButton: UIButton = {
         let bt = UIButton()
         bt.setImage(UIImage(named: "place"), for: .normal)
+        bt.backgroundColor = .whiteColor
+        bt.clipsToBounds = true
+        bt.layer.cornerRadius = 8
+        
+        bt.layer.borderWidth = 1
+        bt.layer.borderColor = UIColor.gray5Color?.cgColor
         return bt
     }()
     
@@ -67,10 +80,15 @@ class HomeView: UIView {
         let bt = UIButton()
         bt.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         bt.clipsToBounds = true
-        bt.layer.cornerRadius = bt.frame.size.width / 2
+        bt.layer.cornerRadius = 32 // 64라는 고정값을 줘서 32로함
+        bt.backgroundColor = .blackColor
+        bt.tintColor = .whiteColor
+        bt.layer.borderWidth = 1
+        bt.setPreferredSymbolConfiguration(.init(pointSize: 30, weight: .regular, scale: .default), forImageIn: .normal)
         return bt
     }()
     
+
     
     
     override init(frame: CGRect) {
@@ -94,6 +112,8 @@ class HomeView: UIView {
         stackView.addArrangedSubview(manButton)
         stackView.addArrangedSubview(womanButton)
         addSubview(gpsButton)
+        addSubview(floatingButton)
+        addSubview(centerPin)
     }
     
     
@@ -123,6 +143,18 @@ class HomeView: UIView {
             make.top.equalTo(stackView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.size.equalTo(52)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-102)
+            make.trailing.equalToSuperview().offset(-16)
+            make.size.equalTo(64)
+        }
+        
+        centerPin.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.size.equalTo(48)
         }
     }
     
