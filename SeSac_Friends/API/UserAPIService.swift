@@ -10,13 +10,13 @@ import Alamofire
 import SwiftyJSON
 
 
-class APIService {
+class UserAPIService {
     
     static func getUserInfo(idToken: String, completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
         
         let headers = ["idtoken" : idToken] as HTTPHeaders
         
-        AF.request(EndPoint.getMyUserInfo.url.absoluteString, method: .get, headers: headers).responseDecodable(of: UserInfo.self) { response in
+        AF.request(UserEndPoint.getMyUserInfo.url.absoluteString, method: .get, headers: headers).responseDecodable(of: UserInfo.self) { response in
             
             let statusCode = response.response?.statusCode
             
@@ -51,7 +51,7 @@ class APIService {
             "gender" : model.gender
         ]
         
-        AF.request(EndPoint.postMyUserInfo.url.absoluteString, method: .post, parameters: signUpParameters, headers: headers).responseString { response in
+        AF.request(UserEndPoint.postMyUserInfo.url.absoluteString, method: .post, parameters: signUpParameters, headers: headers).responseString { response in
             
             completion(response.response?.statusCode, nil)
             
@@ -67,7 +67,7 @@ class APIService {
         let headers = ["idtoken": idToken, "Content-Type" : "application/x-www-form-urlencoded "] as HTTPHeaders
         
         
-        AF.request(EndPoint.withdrawSignUp.url.absoluteString, method: .post, headers: headers).responseString { response in
+        AF.request(UserEndPoint.withdrawSignUp.url.absoluteString, method: .post, headers: headers).responseString { response in
             
             completion(response.response?.statusCode, nil)
         }
@@ -88,7 +88,7 @@ class APIService {
             "hobby" : model.hobby
         ]
         
-        AF.request(EndPoint.updateMyPage.url.absoluteString, method: .post, parameters: updateParameter, headers: headers).responseString { response in
+        AF.request(UserEndPoint.updateMyPage.url.absoluteString, method: .post, parameters: updateParameter, headers: headers).responseString { response in
             
             completion(response.response?.statusCode)
         }

@@ -32,33 +32,36 @@ class HomeView: UIView {
         return stack
     }()
     
-    let manButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("남자", for: .normal)
-        bt.titleLabel?.text = "남자"
-        bt.titleLabel?.font = UIFont.Title3_M14
-        bt.setTitleColor(.blackColor, for: .normal)
-        bt.backgroundColor = .whiteColor
+    let manButton: CustomButton = {
+        let bt = CustomButton(frame: .zero, type: .inactive, text: "남자")
+        bt.layer.cornerRadius = 0
+        bt.layer.borderWidth = 0
+        bt.tag = 1
         return bt
     }()
 
-    let womanButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("여자", for: .normal)
-        bt.setTitleColor(.blackColor, for: .normal)
-        bt.titleLabel?.font = UIFont.Title3_M14
-        bt.backgroundColor = .whiteColor
+    let womanButton: CustomButton = {
+        let bt = CustomButton(frame: .zero, type: .inactive, text: "여자")
+        bt.layer.cornerRadius = 0
+        bt.layer.borderWidth = 0
+        bt.tag = 0
         return bt
     }()
     
-    let allButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("전체", for: .normal)
-        bt.titleLabel?.font = UIFont.Title3_M14
-        bt.setTitleColor(.blackColor, for: .normal)
-        bt.backgroundColor = .greenColor
+    let allButton: CustomButton = {
+        let bt = CustomButton(frame: .zero, type: .inactive, text: "전체")
+        bt.layer.cornerRadius = 0
+        bt.layer.borderWidth = 0
+        bt.tag = 2
         return bt
     }()
+  
+    // Button 을 CustomButton으로 바꿔주기... 이걸 왜 지금할까
+//    let allsButton: CustomButton = {
+//        let bt = CustomButton(frame: .zero, type: .inactive, text: "전체")
+//
+//        return bt
+//    }()
     
     let gpsButton: UIButton = {
         let bt = UIButton()

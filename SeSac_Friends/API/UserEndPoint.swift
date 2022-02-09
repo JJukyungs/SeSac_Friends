@@ -15,7 +15,7 @@ enum Method: String {
     case DELETE
 }
 
-enum EndPoint {
+enum UserEndPoint {
     case getMyUserInfo
     case postMyUserInfo
     case withdrawSignUp // 회원탈퇴
@@ -31,7 +31,7 @@ extension URL {
     }
 }
 
-extension EndPoint {
+extension UserEndPoint {
     
     var url: URL {
         switch self {

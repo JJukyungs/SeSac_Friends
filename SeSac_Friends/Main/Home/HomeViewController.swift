@@ -8,12 +8,17 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Toast_Swift
 
 class HomeViewController: UIViewController {
 
     let mainView = HomeView()
     
     let locationManager = CLLocationManager()
+    var myLocation: CLLocation!
+    
+    let campusCoordinate = CLLocationCoordinate2DMake(37.517819364682694, 126.88647317074734)
+    // 시뮬레이터 좌표 새싹 캠퍼스로 고정해놓았음... 후에 수정 및
     
     override func loadView() {
         self.view = mainView
@@ -29,27 +34,85 @@ class HomeViewController: UIViewController {
         locationManager.delegate = self
         mainView.mapView.delegate = self
         
+        setupLocation()
+        
+        navigationController?.navigationBar.isHidden = true
+        
+        // Button Action
+        mainView.manButton.addTarget(self, action: #selector(filterButtonClicked(sender: )), for: .touchUpInside)
+        mainView.womanButton.addTarget(self, action: #selector(filterButtonClicked(sender:)), for: .touchUpInside)
+        mainView.allButton.addTarget(self, action: #selector(filterButtonClicked(sender:)), for: .touchUpInside)
+        mainView.gpsButton.addTarget(self, action: #selector(gpsButtonClicked), for: .touchUpInside)
     }
     
     // MARK: - ButtonClickAction
+    // allButton이 클릭이 잘 안된다.
+    // 갓 박연배님 말 참고해보니 네비게이션 바에 가려져서 제대로 안눌리는 현상이 있엇음 . 연배님 해결 -> 네비 바 히든 처리
     
-    @objc func floatingButtonClicked() {
+    @objc func filterButtonClicked(sender: CustomButton) {
+        sender.layer.borderWidth = 0
+        
+        switch sender.tag {
+        case 0:
+            mainView.womanButton.setupBtType(type: .fill)
+            mainView.manButton.setupBtType(type: .inactive)
+            mainView.allButton.setupBtType(type: .inactive)
+        case 1:
+            mainView.womanButton.setupBtType(type: .inactive)
+            mainView.manButton.setupBtType(type: .fill)
+            mainView.allButton.setupBtType(type: .inactive)
+
+        case 2:
+            mainView.womanButton.setupBtType(type: .inactive)
+            mainView.manButton.setupBtType(type: .inactive)
+            mainView.allButton.setupBtType(type: .fill)
+
+            
+        default:
+            view.makeToast("다시 한번 클릭해주세요")
+        }
+        
+        HomeViewModel.shared.genderFilter.value = sender.tag
+        print(HomeViewModel.shared.genderFilter.value)
         
     }
     
-    @objc func manButtonClicked() {
+
+    @objc func gpsButtonClicked() {
+        print(#function)
+
+        guard let currentLocation = locationManager.location else {
+            locationManager.requestWhenInUseAuthorization()
+            return
+        }
         
-    }
-    
-    @objc func womanButtonClicked() {
+        myLocation = currentLocation
         
-    }
-    
-    @objc func allButtonClicked() {
+        mainView.mapView.showsUserLocation = true
+        mainView.mapView.setUserTrackingMode(.follow, animated: true)
         
     }
 
-
+    
+    // MARK: - Location
+    
+    func setupLocation() {
+        
+        checkUserLocationServiceAuthorization()
+        
+        myLocation = locationManager.location
+        mainView.mapView.setRegion(MKCoordinateRegion(center: campusCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        
+        addPin()
+    }
+    
+    // Pin 추가
+    func addPin() {
+        let pin = MKPointAnnotation()
+        pin.coordinate = campusCoordinate
+        mainView.mapView.addAnnotation(pin)
+    }
+    
 }
 
 // 016회차 파일 [트랜드미디어], 마늘맨 블로그 참조
@@ -65,7 +128,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization() // 앱을 사용하는 동안 에 대한 위치 권한 요청
             locationManager.startUpdatingLocation() // 위치 접근 시작 => didUpdateLocaitons 실행
         case .restricted, .denied:
-            print("DENIED, 설정으로 유도")
+            settingAlert()
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation() // 위치 접근 시작 => didUpdateLocaitons 실행
         case .authorizedAlways:
@@ -96,7 +159,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         let authorizationStatus: CLAuthorizationStatus
         
         if #available(iOS 14.0, *) {
-            authorizationStatus =         locationManager.authorizationStatus // iOS 14 이상에서만 사용가능
+            authorizationStatus = locationManager.authorizationStatus // iOS 14 이상에서만 사용가능
         } else {
             authorizationStatus = CLLocationManager.authorizationStatus() // 열거형, iOS 14 미만
 
@@ -110,7 +173,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         } else {
             print("iOS 위치 서비스를 켜주세요")
         }
-        
     }
     
     // 권한이 변경될 때 마다 감지해서 실행
@@ -146,12 +208,34 @@ extension HomeViewController: CLLocationManagerDelegate {
         }
     }
     
-    
+    // 설정페이지로 가기 위한 얼럿
+    func settingAlert() {
+        
+        let alert = UIAlertController(title: "위치 권한 설정 요청", message: "새싹 친구들을 검색하기 위해 위치 권한을 설정해주세요", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "설정", style: .default) { alertAction in
+            
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        
         return nil
+        
     }
 }

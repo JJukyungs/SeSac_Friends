@@ -159,7 +159,7 @@ class LoginViewModel {
     
     func getUserInfo(completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
         
-        APIService.getUserInfo(idToken: idToken) { userInfo, error, statuscode in
+        UserAPIService.getUserInfo(idToken: idToken) { userInfo, error, statuscode in
             
             completion(userInfo, error, statuscode)
         }
@@ -171,7 +171,7 @@ class LoginViewModel {
         let signUpModel = signUpModel(phoneNumber: "+82 \(nohypenNumber.value)", FCMtoken: FCMToken, nick: nickname.value, email: email.value, birth: birthday.value, gender: gender.value)
         
         
-        APIService.signUpUserInfo(idToken: idToken, model: signUpModel) { statuscode, error in
+        UserAPIService.signUpUserInfo(idToken: idToken, model: signUpModel) { statuscode, error in
             
             completion(statuscode, error)
         }

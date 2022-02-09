@@ -35,7 +35,7 @@ class ProfileViewModel {
     
     func getUserInfo(completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
         
-        APIService.getUserInfo(idToken: UserDefaults.standard.string(forKey: "idToken")!) { userInfo, error, statuscode in
+        UserAPIService.getUserInfo(idToken: UserDefaults.standard.string(forKey: "idToken")!) { userInfo, error, statuscode in
             
             guard let userInfo = userInfo else {
                 return
@@ -51,7 +51,7 @@ class ProfileViewModel {
     
     func updateMyPage(model: UpdateMyPageModel, completion: @escaping (Int?) -> Void) {
         
-        APIService.updateMyPage(idToken: UserDefaults.standard.string(forKey: "idToken")!, model: model) { statuscode in
+        UserAPIService.updateMyPage(idToken: UserDefaults.standard.string(forKey: "idToken")!, model: model) { statuscode in
             
             guard let statuscode = statuscode else {
                 return
