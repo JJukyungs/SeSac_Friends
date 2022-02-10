@@ -25,6 +25,23 @@ class HomeViewController: UIViewController {
         
     }
     
+    // 화면 이동시 계속 호출 될수 있게?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        monitorNetwork()
+        
+        HomeViewModel.shared.getUserInfo { userinfo, error, statuscode in
+            
+            guard let userinfo = userinfo else {
+                return
+            }
+            
+        }
+        
+        // 플로팅 버튼 상태처리도 구현해야함
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,15 +120,28 @@ class HomeViewController: UIViewController {
         myLocation = locationManager.location
         mainView.mapView.setRegion(MKCoordinateRegion(center: campusCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
         
-        addPin()
+//        addPin()
     }
     
-    // Pin 추가
-    func addPin() {
-        let pin = MKPointAnnotation()
-        pin.coordinate = campusCoordinate
-        mainView.mapView.addAnnotation(pin)
+//    // Pin 추가
+//    func addPin() {
+//        let pin = MKPointAnnotation()
+//        pin.coordinate = campusCoordinate
+//        mainView.mapView.addAnnotation(pin)
+//    }
+    
+    
+    // Filter -> Gender 값에 따라 보여주게
+    func addFilterPin(genderFilter: Int) {
+        
+        mainView.mapView.removeAnnotations(mainView.mapView.annotations)
+        
+        
+        
+        
     }
+    
+    
     
 }
 
@@ -228,14 +258,57 @@ extension HomeViewController: CLLocationManagerDelegate {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    
 }
 
 extension HomeViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+
+        guard let annotation = annotation as? CustomAnnotation else {
+            return nil
+        }
+
+        var annotationView = self.mainView.mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier)
         
-        return nil
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: CustomAnnotationView.identifier)
+            annotationView?.canShowCallout = false
+            annotationView?.contentMode = .scaleAspectFill
+        
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let sesacFaceImage: UIImage!
+        let size = CGSize(width: 85, height: 85)
+        
+        UIGraphicsBeginImageContext(size)
+        
+        // annotation Type Int형으로 분리
+        switch annotation.type {
+            
+        case .face1:
+            sesacFaceImage = UIImage(named: "sesac_face_1")
+        case .face2:
+            sesacFaceImage = UIImage(named: "sesac_face_2")
+        case .fcae3:
+            sesacFaceImage = UIImage(named: "sesac_face_3")
+        case .face4:
+            sesacFaceImage = UIImage(named: "sesac_face_4")
+        case .face5:
+            sesacFaceImage = UIImage(named: "sesac_face_5")
+        }
+        
+        sesacFaceImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView?.image = resizeImage
+        
+        return annotationView
         
     }
 }
