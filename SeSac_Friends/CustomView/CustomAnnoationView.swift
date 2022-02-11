@@ -12,7 +12,7 @@ import MapKit
 enum sesacFaceImageType: String {
     case face1
     case face2
-    case fcae3
+    case face3
     case face4
     case face5
 }

@@ -28,7 +28,8 @@ class HomeViewController: UIViewController {
     // 화면 이동시 계속 호출 될수 있게?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print(#function)
+
         monitorNetwork()
         
         HomeViewModel.shared.getUserInfo { userinfo, error, statuscode in
@@ -39,13 +40,16 @@ class HomeViewController: UIViewController {
             
         }
         
+        searchFirends()
+        
         // 플로팅 버튼 상태처리도 구현해야함
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(#function)
+
         view.backgroundColor = .white
         
         locationManager.delegate = self
@@ -67,6 +71,8 @@ class HomeViewController: UIViewController {
     // 갓 박연배님 말 참고해보니 네비게이션 바에 가려져서 제대로 안눌리는 현상이 있엇음 . 연배님 해결 -> 네비 바 히든 처리
     
     @objc func filterButtonClicked(sender: CustomButton) {
+        print(#function)
+
         sender.layer.borderWidth = 0
         
         switch sender.tag {
@@ -83,6 +89,7 @@ class HomeViewController: UIViewController {
             mainView.womanButton.setupBtType(type: .inactive)
             mainView.manButton.setupBtType(type: .inactive)
             mainView.allButton.setupBtType(type: .fill)
+            
 
             
         default:
@@ -92,6 +99,7 @@ class HomeViewController: UIViewController {
         HomeViewModel.shared.genderFilter.value = sender.tag
         print(HomeViewModel.shared.genderFilter.value)
         
+        searchFirends()
     }
     
 
@@ -100,6 +108,7 @@ class HomeViewController: UIViewController {
 
         guard let currentLocation = locationManager.location else {
             locationManager.requestWhenInUseAuthorization()
+            settingAlert()
             return
         }
         
@@ -108,16 +117,20 @@ class HomeViewController: UIViewController {
         mainView.mapView.showsUserLocation = true
         mainView.mapView.setUserTrackingMode(.follow, animated: true)
         
+        searchFirends()
+
     }
 
     
     // MARK: - Location
     
     func setupLocation() {
-        
+        print(#function)
+
         checkUserLocationServiceAuthorization()
         
         myLocation = locationManager.location
+        
         mainView.mapView.setRegion(MKCoordinateRegion(center: campusCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
         
 //        addPin()
@@ -133,11 +146,21 @@ class HomeViewController: UIViewController {
     
     // Filter -> Gender 값에 따라 보여주게
     func addFilterPin(genderFilter: Int) {
-        
+        print(#function)
+
         mainView.mapView.removeAnnotations(mainView.mapView.annotations)
         
         
-        
+        if genderFilter == 2 {
+            mainView.mapView.addAnnotations(HomeViewModel.shared.manAnnotation)
+            mainView.mapView.addAnnotations(HomeViewModel.shared.womanAnnotation)
+        } else {
+            if genderFilter == 0 {
+                mainView.mapView.addAnnotations(HomeViewModel.shared.womanAnnotation)
+            } else {
+                mainView.mapView.addAnnotations(HomeViewModel.shared.manAnnotation)
+            }
+        }
         
     }
     
@@ -151,7 +174,8 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     // 사용자 권한 상태 확인
     func checkCurrentLocationAuthorization(_ authorizationStatus : CLAuthorizationStatus){
-        
+        print(#function)
+
         switch authorizationStatus {
         case .notDetermined:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest // 정말 리얼리스트 하게 자세하게 위치를 잡기
@@ -159,10 +183,8 @@ extension HomeViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation() // 위치 접근 시작 => didUpdateLocaitons 실행
         case .restricted, .denied:
             settingAlert()
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation() // 위치 접근 시작 => didUpdateLocaitons 실행
-        case .authorizedAlways:
-            print("Always")
         @unknown default:
             print("DEFAULT")
         }
@@ -185,7 +207,8 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     // 9. iOS 버전에 따른 분기 처리와 iOS 위치 서비스 여부 확인
     func checkUserLocationServiceAuthorization() {
-        
+        print(#function)
+
         let authorizationStatus: CLAuthorizationStatus
         
         if #available(iOS 14.0, *) {
@@ -214,13 +237,13 @@ extension HomeViewController: CLLocationManagerDelegate {
     // 위치 접근에 실패한 경우
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR")
-        // MARK: - 해결해야할 부분
-        // 지금 위치 접근에 실패를 함 위치접근할수 있게 해야함
+        
     }
     
     // 사용자가 위치 허용을 한 경우
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        print(#function)
+
         //guard let location = locations.last else { return }
         
         if let coordinate = locations.last?.coordinate {
@@ -240,7 +263,8 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     // 설정페이지로 가기 위한 얼럿
     func settingAlert() {
-        
+        print(#function)
+
         let alert = UIAlertController(title: "위치 권한 설정 요청", message: "새싹 친구들을 검색하기 위해 위치 권한을 설정해주세요", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "설정", style: .default) { alertAction in
@@ -260,11 +284,83 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
     
     
+    /*
+     fromQueueDB : Object  - 다른 사용자 목록
+     fromQueueDBRequested : Object - 나에게 ‘요청한’ 다른 사용자의 목록
+     그 외 기획서 참고..
+     */
+    
+    func searchFirends() {
+        
+        print(#function)
+        
+        let searchModel = OnQueueModel(region: HomeViewModel.shared.centerRegion.value, lat: HomeViewModel.shared.centerLat.value, long: HomeViewModel.shared.centerLong.value)
+        
+        
+        HomeViewModel.shared.searchFriends(model: searchModel) { onqueueresult, statuscode, error in
+            
+            guard let onqueueresult = onqueueresult else {
+                return
+            }
+            HomeViewModel.shared.womanAnnotation.removeAll()
+            HomeViewModel.shared.manAnnotation.removeAll()
+            
+            switch statuscode {
+            
+            case 200:
+                
+                
+                // 다른 사용자 목록
+                onqueueresult.fromQueueDB.forEach { otherUserInfo in
+                    
+                    switch otherUserInfo.gender {
+                        
+                    case 0:
+                        HomeViewModel.shared.womanAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+                    
+                    case 1:
+                        HomeViewModel.shared.manAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+                    default:
+                        self.view.makeToast("error")
+                        print("HomeViewController 301.p")
+                    }
+                }
+                
+                // 나에게 요청한 목록은 나중에
+                
+                self.addFilterPin(genderFilter: HomeViewModel.shared.genderFilter.value)
+                
+            case 401:
+                print("Firebase Token Error")
+            case 406:
+                print("미가입 회원")
+            default:
+                print("server or client Error")
+            }
+            
+            
+        }
+    }
     
     
 }
 
 extension HomeViewController: MKMapViewDelegate {
+    
+    // 지도 이동
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        let lat = mainView.mapView.centerCoordinate.latitude
+        let long = mainView.mapView.centerCoordinate.longitude
+        
+        HomeViewModel.shared.setRegion(lat: lat, long: long)
+        
+        searchFirends()
+    }
+    
+    
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -289,14 +385,14 @@ extension HomeViewController: MKMapViewDelegate {
         
         UIGraphicsBeginImageContext(size)
         
-        // annotation Type Int형으로 분리
+        
         switch annotation.type {
             
         case .face1:
             sesacFaceImage = UIImage(named: "sesac_face_1")
         case .face2:
             sesacFaceImage = UIImage(named: "sesac_face_2")
-        case .fcae3:
+        case .face3:
             sesacFaceImage = UIImage(named: "sesac_face_3")
         case .face4:
             sesacFaceImage = UIImage(named: "sesac_face_4")

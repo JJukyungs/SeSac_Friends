@@ -17,7 +17,7 @@ extension QueueEndPoint {
     var url: URL {
         switch self {
         case .onqueue:
-            return .makeEndPoint("onqueue")
+            return .makeEndPoint("queue/onqueue")
         case .queue:
             return .makeEndPoint("")
         }
