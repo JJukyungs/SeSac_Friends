@@ -33,10 +33,21 @@ class HomeViewModel {
     var centerLong = Observable(0.0) // + 180 후 소수점 제거 -> 5자리
     var centerRegion = Observable(0) // lat + long 10자리
     
+    
+    
+    
+    
     // 저장되는 어노테이션 값
     var manAnnotation: [CustomAnnotation] = []
     var womanAnnotation: [CustomAnnotation] = []
     
+    // 취미 입력 값
+    // 서비스에서 추천하는 취미 배열
+    var fromRecommendHobby: Observable<[String]> = Observable([])
+    
+    var nearByFriendsHobby: Observable<[String]> = Observable([])
+    
+    var hobbyArray: [String] = []
     
     // 플로팅 버튼 상태 초기화면 0 취미 1 찾는 중 2
     var floatingStatus: Observable<Int> = Observable(0)

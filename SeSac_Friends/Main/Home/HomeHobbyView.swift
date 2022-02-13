@@ -11,7 +11,11 @@ import SnapKit
 
 class HomeHobbyView: UIView {
     
-    let searchbar = UISearchBar()
+    let searchbar: UISearchBar = {
+        let searchbar = UISearchBar()
+        searchbar.placeholder = "띄어쓰기로 복수 입력이 가능해요"
+        return searchbar
+    }()
     
     let searchButton: CustomButton = {
         let bt = CustomButton(frame: .zero, type: .fill, text: "새싹 찾기")
@@ -50,14 +54,15 @@ class HomeHobbyView: UIView {
     func setupConstraints() {
         
         searchButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-50)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(48)
         }
         
         hobbyCollectionView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide).inset(32)
+            make.bottom.equalTo(searchButton.snp.top).offset(-30)
+            make.leading.trailing.equalToSuperview().inset(16)
             
         }
     }

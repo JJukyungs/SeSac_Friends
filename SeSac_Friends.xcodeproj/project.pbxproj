@@ -10,6 +10,8 @@
 		1E2CB2FE27B92682007F4FE9 /* HomeHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */; };
 		1E2CB30027B93020007F4FE9 /* HomeHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */; };
 		1E2CB30227B941F1007F4FE9 /* HomeHobbyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */; };
+		1E2CB30427B959A5007F4FE9 /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */; };
+		1E2CB30627B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */; };
 		1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C80E2795859A009CB80E /* AppDelegate.swift */; };
 		1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8102795859A009CB80E /* SceneDelegate.swift */; };
 		1E40C8182795859B009CB80E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8172795859B009CB80E /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyView.swift; sourceTree = "<group>"; };
 		1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyViewController.swift; sourceTree = "<group>"; };
 		1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyCollectionCell.swift; sourceTree = "<group>"; };
+		1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
+		1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHobbyCollectionViewCell.swift; sourceTree = "<group>"; };
 		1E40C80B2795859A009CB80E /* SeSac_Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac_Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E40C80E2795859A009CB80E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E40C8102795859A009CB80E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -347,6 +351,9 @@
 		1E40C89627A1686A009CB80E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */,
+				1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */,
+				1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */,
 				1E40C89927A17029009CB80E /* HomeViewController.swift */,
 				1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */,
 				1E40C89E27A2CC28009CB80E /* HomeView.swift */,
@@ -404,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				1E40C8CF27B3876F009CB80E /* HomeViewModel.swift */,
-				1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */,
 				1E40C8B627AAC570009CB80E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
@@ -594,6 +600,7 @@
 				1E40C87C279DA51D009CB80E /* EmailViewController.swift in Sources */,
 				1E40C87A279D8C6C009CB80E /* BirthdayViewController.swift in Sources */,
 				1E40C8B427A7D237009CB80E /* NoticeTableViewCell.swift in Sources */,
+				1E2CB30427B959A5007F4FE9 /* HobbyCollectionHeaderView.swift in Sources */,
 				1E40C8B227A2FF04009CB80E /* ProfileHeaderTableViewCell.swift in Sources */,
 				1E40C8C227AC5380009CB80E /* BackgroundTableViewCell.swift in Sources */,
 				1E40C8B927AAE6D7009CB80E /* ProfileDetailViewController.swift in Sources */,
@@ -613,6 +620,7 @@
 				1E40C8D227B3F674009CB80E /* QueueEndPoint.swift in Sources */,
 				1E40C89D27A299E3009CB80E /* MainTabBarController.swift in Sources */,
 				1E40C8522797F03D009CB80E /* CustomButton.swift in Sources */,
+				1E2CB30627B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift in Sources */,
 				1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */,
 				1E2CB30027B93020007F4FE9 /* HomeHobbyViewController.swift in Sources */,
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,

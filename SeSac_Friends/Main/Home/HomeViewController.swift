@@ -53,7 +53,12 @@ class HomeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
+        print(#function)
+        
         navigationController?.navigationBar.isHidden = false
+        
+        // 취미 입력 부분에서 사용할 수 있게 disapper 에서 한번 호출해줌
+        searchFirends()
     }
     
     override func viewDidLoad() {
@@ -306,6 +311,8 @@ extension HomeViewController: CLLocationManagerDelegate {
      fromQueueDB : Object  - 다른 사용자 목록
      fromQueueDBRequested : Object - 나에게 ‘요청한’ 다른 사용자의 목록
      그 외 기획서 참고..
+     
+     
      */
     
     func searchFirends() {
@@ -342,11 +349,36 @@ extension HomeViewController: CLLocationManagerDelegate {
                         self.view.makeToast("error")
                         print("HomeViewController 301.p")
                     }
+                    
+                    
+                    // 주변 친구들 취미 배열에 넣어주기
+                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+                    
+                    // Set을 활용해 배열의 중복 값 제거
+                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
+                    
+                    
+                    
                 }
+                
+                print("man : ", HomeViewModel.shared.manAnnotation)
+                print("woman : ", HomeViewModel.shared.womanAnnotation)
                 
                 // 나에게 요청한 목록은 나중에
                 
+                
                 self.addFilterPin(genderFilter: HomeViewModel.shared.genderFilter.value)
+                
+                
+                // 취미 부분
+                HomeViewModel.shared.fromRecommendHobby.value = onqueueresult.fromRecommend
+                
+                HomeViewModel.shared.hobbyArray.removeAll()
+                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.fromRecommendHobby.value)
+                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.nearByFriendsHobby.value)
+                
+                print(HomeViewModel.shared.hobbyArray)
+                
                 
             case 401:
                 print("Firebase Token Error")
