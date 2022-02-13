@@ -43,6 +43,9 @@ class ProfileViewModel {
             
             self.userInfo.value = userInfo
             
+            // test
+            self.nick.value = userInfo.nick
+            
             completion(userInfo, error, statuscode)
             
         }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E2CB2FE27B92682007F4FE9 /* HomeHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */; };
+		1E2CB30027B93020007F4FE9 /* HomeHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */; };
+		1E2CB30227B941F1007F4FE9 /* HomeHobbyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */; };
 		1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C80E2795859A009CB80E /* AppDelegate.swift */; };
 		1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8102795859A009CB80E /* SceneDelegate.swift */; };
 		1E40C8182795859B009CB80E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8172795859B009CB80E /* Assets.xcassets */; };
@@ -78,6 +81,9 @@
 
 /* Begin PBXFileReference section */
 		0FAC08034A663BC453C8CA1F /* Pods-SeSac_Friends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.release.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.release.xcconfig"; sourceTree = "<group>"; };
+		1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyView.swift; sourceTree = "<group>"; };
+		1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyViewController.swift; sourceTree = "<group>"; };
+		1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyCollectionCell.swift; sourceTree = "<group>"; };
 		1E40C80B2795859A009CB80E /* SeSac_Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac_Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E40C80E2795859A009CB80E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E40C8102795859A009CB80E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,7 +348,9 @@
 			isa = PBXGroup;
 			children = (
 				1E40C89927A17029009CB80E /* HomeViewController.swift */,
+				1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */,
 				1E40C89E27A2CC28009CB80E /* HomeView.swift */,
+				1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -396,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				1E40C8CF27B3876F009CB80E /* HomeViewModel.swift */,
+				1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */,
 				1E40C8B627AAC570009CB80E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
@@ -548,6 +557,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E2CB2FE27B92682007F4FE9 /* HomeHobbyView.swift in Sources */,
+				1E2CB30227B941F1007F4FE9 /* HomeHobbyCollectionCell.swift in Sources */,
 				1E40C876279D85E2009CB80E /* NickNameViewController.swift in Sources */,
 				1E40C872279D4939009CB80E /* InputCertificationViewController.swift in Sources */,
 				1E40C890279E6698009CB80E /* UserAPIService.swift in Sources */,
@@ -603,6 +614,7 @@
 				1E40C89D27A299E3009CB80E /* MainTabBarController.swift in Sources */,
 				1E40C8522797F03D009CB80E /* CustomButton.swift in Sources */,
 				1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */,
+				1E2CB30027B93020007F4FE9 /* HomeHobbyViewController.swift in Sources */,
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,
 				1E40C8A827A2CE07009CB80E /* ProfileViewController.swift in Sources */,
 				1E40C88D279DCF67009CB80E /* UserEndPoint.swift in Sources */,

@@ -18,6 +18,7 @@ class MainTabBarController: UITabBarController {
         self.tabBar.unselectedItemTintColor = .gray6Color
         self.tabBar.backgroundColor = .whiteColor
         
+        print(UserDefaults.standard.string(forKey: "idToken") ?? "" )
         setupTabBar()
     }
     

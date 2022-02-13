@@ -30,8 +30,8 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setUI()
+
+        setupConstraints()
         
     }
     
@@ -45,7 +45,7 @@ class OnBoardingCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func setUI() {
+    func setupConstraints() {
         addSubview(titleLabel)
         addSubview(boardingImageView)
         

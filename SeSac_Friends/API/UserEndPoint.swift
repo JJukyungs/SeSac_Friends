@@ -42,7 +42,7 @@ extension UserEndPoint {
         case .withdrawSignUp:
             return .makeEndPoint("user/withdraw")
         case .updateMyPage:
-            return .makeEndPoint("update/mypage")
+            return .makeEndPoint("user/update/mypage")
         }
     }
 }

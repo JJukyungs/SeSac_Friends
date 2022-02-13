@@ -30,6 +30,10 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         print(#function)
 
+        navigationController?.navigationBar.isHidden = true
+        
+
+        
         monitorNetwork()
         
         HomeViewModel.shared.getUserInfo { userinfo, error, statuscode in
@@ -44,6 +48,12 @@ class HomeViewController: UIViewController {
         
         // 플로팅 버튼 상태처리도 구현해야함
         
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -57,13 +67,14 @@ class HomeViewController: UIViewController {
         
         setupLocation()
         
-        navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         
         // Button Action
         mainView.manButton.addTarget(self, action: #selector(filterButtonClicked(sender: )), for: .touchUpInside)
         mainView.womanButton.addTarget(self, action: #selector(filterButtonClicked(sender:)), for: .touchUpInside)
         mainView.allButton.addTarget(self, action: #selector(filterButtonClicked(sender:)), for: .touchUpInside)
         mainView.gpsButton.addTarget(self, action: #selector(gpsButtonClicked), for: .touchUpInside)
+        mainView.floatingButton.addTarget(self, action: #selector(floatingButtonClicked), for: .touchUpInside)
     }
     
     // MARK: - ButtonClickAction
@@ -102,6 +113,7 @@ class HomeViewController: UIViewController {
         searchFirends()
     }
     
+    
 
     @objc func gpsButtonClicked() {
         print(#function)
@@ -121,6 +133,12 @@ class HomeViewController: UIViewController {
 
     }
 
+    // floating Button Action
+    
+    @objc func floatingButtonClicked() {
+        navigationController?.pushViewController(HomeHobbyViewController(), animated: true)
+    }
+    
     
     // MARK: - Location
     

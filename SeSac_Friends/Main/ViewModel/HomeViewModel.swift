@@ -8,6 +8,15 @@
 import Foundation
 
 
+enum floationgStatus: Int {
+    case defaultStatus = 0
+    case matchingStatus = 1
+    case matchedStatus = 2
+}
+
+
+
+
 class HomeViewModel {
     
     static let shared = HomeViewModel()
@@ -28,6 +37,17 @@ class HomeViewModel {
     var manAnnotation: [CustomAnnotation] = []
     var womanAnnotation: [CustomAnnotation] = []
     
+    
+    // 플로팅 버튼 상태 초기화면 0 취미 1 찾는 중 2
+    var floatingStatus: Observable<Int> = Observable(0)
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - 함수
     
     // main 화면으로 바로 들어가질때도 호출 될수 있게 
     func getUserInfo(completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
@@ -103,4 +123,11 @@ class HomeViewModel {
         
     }
     
+    // 호출 장소. 취미창 찾기 버튼 클릭시, 중단시,
+    func checkFloatingStatus(status: Int) {
+        //상태 저장을 위해 UserDefualt에 저장
+        let floatingStatus = UserDefaults.standard.integer(forKey: "floatingStatus")
+        
+        self.floatingStatus.value = floatingStatus
+    }
 }
