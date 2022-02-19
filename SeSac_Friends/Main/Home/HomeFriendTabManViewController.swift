@@ -15,12 +15,12 @@ class HomeFriendTabManViewController: TabmanViewController {
     
     
     
-    var viewControllers: [UIViewController] = []
+    var viewControllers: Array<UIViewController> = []
     
     let homeNearFriendsViewController = HomeNearFriendViewController()
     let homeAcceptViewController = HomeAcceptViewController()
     
-    let tapView = UIView()
+  
     
     
     
@@ -31,12 +31,14 @@ class HomeFriendTabManViewController: TabmanViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = .white
         self.navigationItem.title = "새싹 찾기"
         
     
@@ -45,9 +47,15 @@ class HomeFriendTabManViewController: TabmanViewController {
         self.navigationItem.rightBarButtonItem = stopButton
         stopButton.tintColor = .blackColor
         
+        setupTapMan()
+
+    }
+    
+    
+    func setupTapMan() {
         
+        print(#function)
         
-        // Tamman
         
         [homeNearFriendsViewController, homeAcceptViewController].forEach { viewcontroller in
             viewControllers.append(viewcontroller)
@@ -55,98 +63,20 @@ class HomeFriendTabManViewController: TabmanViewController {
         
         self.dataSource = self
         
-        setupView()
-        setupConstraints()
-        setupTapMan()
+        let bar = TMBarView<TMConstrainedHorizontalBarLayout, TMLabelBarButton, TMLineBarIndicator>()
+        
+        addBar(bar, dataSource: self, at: .top)
+        
+        bar.backgroundView.style = .clear
+        bar.layout.transitionStyle = .snap
+        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        bar.indicator.tintColor = UIColor.greenColor
+        
+        bar.buttons.customize { button in
+            button.selectedTintColor = UIColor.greenColor
+            button.tintColor = UIColor.gray6Color
+        }
 
-//
-        
-        
-//        let bar = TMBarView<TMConstrainedHorizontalBarLayout, TMLabelBarButton, TMLineBarIndicator>()
-//
-//
-//
-//        addBar(bar, dataSource: self, at: .top)
-////        settingTabBar(bar: bar)
-////        addBar(bar, dataSource: self, at: .custom(view: tapView, layout: nil))
-//
-//        bar.layout.transitionStyle = .snap
-////        bar.layout.contentMode = .fit
-//        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-//
-//        bar.layout.alignment = .centerDistributed
-//        bar.backgroundView.style = .blur(style: .light)
-////        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-//
-//
-//        bar.buttons.customize { button in
-//            button.tintColor = UIColor.gray6Color
-//            button.selectedTintColor = .greenColor
-//            button.font = UIFont.Title4_R14!
-//            button.selectedFont = UIFont.Title3_M14!
-//        }
-//
-//        bar.indicator.weight = .custom(value: 2)
-//        bar.indicator.tintColor = .greenColor
-//
-        
-        
-        
-        
-        
-        
-     
-    }
-    
-    func setupView() {
-        view.addSubview(tapView)
-    }
-    
-    func setupConstraints() {
-        tapView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(44)
-        }
-    }
-    
-    func setupTapMan() {
-        
-        let bar = TMBar.ButtonBar()
-        bar.layout.transitionStyle = .snap
-        bar.backgroundView.style = .blur(style: .regular)
-        bar.buttons.customize { button in
-            button.tintColor = UIColor.gray6Color
-            button.selectedTintColor = .greenColor
-            button.font = UIFont.Title4_R14!
-            button.selectedFont = UIFont.Title3_M14!
-        }
-        bar.layout.alignment = .centerDistributed
-        bar.layout.contentMode = .fit
-        bar.indicator.weight = .custom(value: 2)
-        bar.indicator.tintColor = .greenColor
-        
-        addBar(bar, dataSource: self, at: .custom(view: tapView, layout: nil))
-    }
-    
-    
-    func settingTabBar(bar: TMBar.ButtonBar) {
-        
-        bar.layout.transitionStyle = .snap
-        bar.layout.contentMode = .fit
-        bar.layout.alignment = .centerDistributed
-        bar.backgroundView.style = .blur(style: .light)
-//        bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        
-        
-        bar.buttons.customize { button in
-            button.tintColor = UIColor.gray6Color
-            button.selectedTintColor = .greenColor
-            button.font = UIFont.Title4_R14!
-            button.selectedFont = UIFont.Title3_M14!
-        }
-        
-        bar.indicator.weight = .custom(value: 2)
-        bar.indicator.tintColor = .greenColor
         
     }
     

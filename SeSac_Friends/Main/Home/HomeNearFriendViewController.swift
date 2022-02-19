@@ -33,7 +33,6 @@ class HomeNearFriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "새싹 찾기"
         view.backgroundColor = .red
         
         /*
