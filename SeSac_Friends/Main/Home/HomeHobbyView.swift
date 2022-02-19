@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 class HomeHobbyView: UIView {
     
     let searchbar: UISearchBar = {
@@ -23,7 +22,7 @@ class HomeHobbyView: UIView {
     }()
     
     let hobbyCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = LeftAlignedCollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         

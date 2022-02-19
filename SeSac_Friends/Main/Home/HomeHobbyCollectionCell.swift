@@ -14,6 +14,7 @@ class HomeHobbyCollectionCell: UICollectionViewCell {
     static let identifier = "HomeHobbyCollectionCell"
 
     
+    
     let cellView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true

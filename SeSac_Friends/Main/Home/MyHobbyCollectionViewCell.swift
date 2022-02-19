@@ -13,6 +13,8 @@ class MyHobbyCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MyHobbyCollectionViewCell"
     
+    var deleteHobbyAction: (() -> ())?
+    
     let cellView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true
@@ -42,6 +44,13 @@ class MyHobbyCollectionViewCell: UICollectionViewCell {
         
         setupView()
         setupConstraints()
+        
+        self.closeButton.addTarget(self, action: #selector(deleteMyHobbyButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func deleteMyHobbyButtonClicked() {
+        print(#function)
+        deleteHobbyAction?()
     }
     
     required init?(coder: NSCoder) {
@@ -67,6 +76,7 @@ class MyHobbyCollectionViewCell: UICollectionViewCell {
         }
         
         closeButton.snp.makeConstraints { make in
+            make.leading.equalTo(tagLabel.snp.trailing).offset(4)
             make.trailing.equalTo(cellView).inset(16)
             make.top.bottom.equalTo(cellView).inset(5)
         }

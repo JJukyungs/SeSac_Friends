@@ -41,4 +41,37 @@ class QueueAPIService {
         }
     
     }
+    
+    static func postQueue(idToken: String, model: PostQueueModel, completion: @escaping (Int?, Error?) -> Void) {
+        
+        let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
+        
+        let parameters: Parameters = [
+            "type": model.type,
+            "region": model.region,
+            "long": model.long,
+            "lat": model.lat,
+            "hf": model.hf
+        ]
+        
+        AF.request(QueueEndPoint.postQueue.url.absoluteString, method: .post, parameters: parameters, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: headers).responseString { response in
+            
+            completion(response.response?.statusCode, response.error)
+            
+        }
+        
+    }
+    
+    // DeletQueue 해야한다..
+    
+    static func deleteQueue(idToken: String, completion: @escaping (Int?, Error?) -> Void) {
+        
+        let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
+        
+        AF.request(QueueEndPoint.deleteQueue.url.absoluteString, method: .delete, headers: headers).responseString { response in
+            
+            print(#function)
+            completion(response.response?.statusCode, response.error)
+        }
+    }
 }

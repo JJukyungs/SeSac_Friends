@@ -187,6 +187,90 @@ class HomeViewController: UIViewController {
         
     }
     
+    func searchFirends() {
+        
+        print(#function)
+        
+        let searchModel = OnQueueModel(region: HomeViewModel.shared.centerRegion.value, lat: HomeViewModel.shared.centerLat.value, long: HomeViewModel.shared.centerLong.value)
+        
+        
+        HomeViewModel.shared.searchFriends(model: searchModel) { onqueueresult, statuscode, error in
+            
+            guard let onqueueresult = onqueueresult else {
+                return
+            }
+            HomeViewModel.shared.womanAnnotation.removeAll()
+            HomeViewModel.shared.manAnnotation.removeAll()
+            
+            switch statuscode {
+            
+            case HTTPStatusCode.SUCCESS.rawValue:
+                
+                
+                // 다른 사용자 목록
+                onqueueresult.fromQueueDB.forEach { otherUserInfo in
+                    
+                    switch otherUserInfo.gender {
+                        
+                    case 0:
+                        HomeViewModel.shared.womanAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+                    
+                    case 1:
+                        HomeViewModel.shared.manAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+                    default:
+                        self.view.makeToast("error")
+                        print("HomeViewController 301.p")
+                    }
+                    
+                    
+                    // 주변 친구들 취미 배열에 넣어주기
+                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+                    
+                    // Set을 활용해 배열의 중복 값 제거
+                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
+                    
+                    
+                    
+                }
+                
+                print("man : ", HomeViewModel.shared.manAnnotation)
+                print("woman : ", HomeViewModel.shared.womanAnnotation)
+                
+                // 나에게 요청한 목록은 나중에
+                
+                
+                self.addFilterPin(genderFilter: HomeViewModel.shared.genderFilter.value)
+                
+                
+                // 취미 부분
+                HomeViewModel.shared.fromRecommendHobby.value = onqueueresult.fromRecommend
+                
+                HomeViewModel.shared.hobbyArray.removeAll()
+                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.fromRecommendHobby.value)
+                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.nearByFriendsHobby.value)
+                
+                print(HomeViewModel.shared.hobbyArray)
+                
+                
+            case HTTPStatusCode.FIREBASE_TOKEN_ERROR.rawValue:
+                self.updateIdToken { idToken, error in
+                    
+                    if let idToken = idToken {
+                        
+                        self.searchFirends()
+                    }
+
+                }
+                print("Firebase Token Error")
+            case 406:
+                print("미가입 회원")
+            default:
+                print("server or client Error")
+            }
+            
+            
+        }
+    }
     
     
 }
@@ -312,86 +396,93 @@ extension HomeViewController: CLLocationManagerDelegate {
      fromQueueDBRequested : Object - 나에게 ‘요청한’ 다른 사용자의 목록
      그 외 기획서 참고..
      
-     
+     위치 이동
      */
     
-    func searchFirends() {
-        
-        print(#function)
-        
-        let searchModel = OnQueueModel(region: HomeViewModel.shared.centerRegion.value, lat: HomeViewModel.shared.centerLat.value, long: HomeViewModel.shared.centerLong.value)
-        
-        
-        HomeViewModel.shared.searchFriends(model: searchModel) { onqueueresult, statuscode, error in
-            
-            guard let onqueueresult = onqueueresult else {
-                return
-            }
-            HomeViewModel.shared.womanAnnotation.removeAll()
-            HomeViewModel.shared.manAnnotation.removeAll()
-            
-            switch statuscode {
-            
-            case 200:
-                
-                
-                // 다른 사용자 목록
-                onqueueresult.fromQueueDB.forEach { otherUserInfo in
-                    
-                    switch otherUserInfo.gender {
-                        
-                    case 0:
-                        HomeViewModel.shared.womanAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
-                    
-                    case 1:
-                        HomeViewModel.shared.manAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
-                    default:
-                        self.view.makeToast("error")
-                        print("HomeViewController 301.p")
-                    }
-                    
-                    
-                    // 주변 친구들 취미 배열에 넣어주기
-                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
-                    
-                    // Set을 활용해 배열의 중복 값 제거
-                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
-                    
-                    
-                    
-                }
-                
-                print("man : ", HomeViewModel.shared.manAnnotation)
-                print("woman : ", HomeViewModel.shared.womanAnnotation)
-                
-                // 나에게 요청한 목록은 나중에
-                
-                
-                self.addFilterPin(genderFilter: HomeViewModel.shared.genderFilter.value)
-                
-                
-                // 취미 부분
-                HomeViewModel.shared.fromRecommendHobby.value = onqueueresult.fromRecommend
-                
-                HomeViewModel.shared.hobbyArray.removeAll()
-                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.fromRecommendHobby.value)
-                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.nearByFriendsHobby.value)
-                
-                print(HomeViewModel.shared.hobbyArray)
-                
-                
-            case 401:
-                print("Firebase Token Error")
-            case 406:
-                print("미가입 회원")
-            default:
-                print("server or client Error")
-            }
-            
-            
-        }
-    }
-    
+//    func searchFirends() {
+//
+//        print(#function)
+//
+//        let searchModel = OnQueueModel(region: HomeViewModel.shared.centerRegion.value, lat: HomeViewModel.shared.centerLat.value, long: HomeViewModel.shared.centerLong.value)
+//
+//
+//        HomeViewModel.shared.searchFriends(model: searchModel) { onqueueresult, statuscode, error in
+//
+//            guard let onqueueresult = onqueueresult else {
+//                return
+//            }
+//            HomeViewModel.shared.womanAnnotation.removeAll()
+//            HomeViewModel.shared.manAnnotation.removeAll()
+//
+//            switch statuscode {
+//
+//            case HTTPStatusCode.SUCCESS.rawValue:
+//
+//
+//                // 다른 사용자 목록
+//                onqueueresult.fromQueueDB.forEach { otherUserInfo in
+//
+//                    switch otherUserInfo.gender {
+//
+//                    case 0:
+//                        HomeViewModel.shared.womanAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+//
+//                    case 1:
+//                        HomeViewModel.shared.manAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+//                    default:
+//                        self.view.makeToast("error")
+//                        print("HomeViewController 301.p")
+//                    }
+//
+//
+//                    // 주변 친구들 취미 배열에 넣어주기
+//                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+//
+//                    // Set을 활용해 배열의 중복 값 제거
+//                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
+//
+//
+//
+//                }
+//
+//                print("man : ", HomeViewModel.shared.manAnnotation)
+//                print("woman : ", HomeViewModel.shared.womanAnnotation)
+//
+//                // 나에게 요청한 목록은 나중에
+//
+//
+//                self.addFilterPin(genderFilter: HomeViewModel.shared.genderFilter.value)
+//
+//
+//                // 취미 부분
+//                HomeViewModel.shared.fromRecommendHobby.value = onqueueresult.fromRecommend
+//
+//                HomeViewModel.shared.hobbyArray.removeAll()
+//                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.fromRecommendHobby.value)
+//                HomeViewModel.shared.hobbyArray.append(contentsOf: HomeViewModel.shared.nearByFriendsHobby.value)
+//
+//                print(HomeViewModel.shared.hobbyArray)
+//
+//
+//            case HTTPStatusCode.FIREBASE_TOKEN_ERROR.rawValue:
+//                self.updateIdToken { idToken, error in
+//
+//                    if let idToken = idToken {
+//                        searchFriends()
+//                    }
+//
+//                }
+//                print("Firebase Token Error")
+//            case 406:
+//                print("미가입 회원")
+//            default:
+//                print("server or client Error")
+//            }
+//
+//
+//        }
+//    }
+//
     
 }
 

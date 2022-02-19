@@ -10,7 +10,8 @@ import Foundation
 
 enum QueueEndPoint {
     case onqueue
-    case queue // post
+    case postQueue // post
+    case deleteQueue
 }
 
 extension QueueEndPoint {
@@ -18,8 +19,10 @@ extension QueueEndPoint {
         switch self {
         case .onqueue:
             return .makeEndPoint("queue/onqueue")
-        case .queue:
-            return .makeEndPoint("")
+        case .postQueue:
+            return .makeEndPoint("queue")
+        case .deleteQueue:
+            return .makeEndPoint("queue")
         }
     }
 }

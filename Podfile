@@ -16,7 +16,9 @@ target 'SeSac_Friends' do
 	pod 'RxAlamofire'
 	pod 'SwiftyJSON', '~> 4.0'
 	pod 'RangeSeekSlider'
-	
+	pod 'RxKeyboard'
+	pod 'Tabman', '~> 2.11'
+	pod 'Pageboy', '~> 3.6'
   # Pods for SeSac_Friends
 
 end

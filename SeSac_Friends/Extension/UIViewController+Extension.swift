@@ -8,6 +8,7 @@
 import UIKit
 import Network
 import Toast_Swift
+import FirebaseAuth
 
 
 
@@ -33,5 +34,27 @@ extension UIViewController {
             }
             let queue = DispatchQueue(label: "Network")
             monitor.start(queue: queue)
+    }
+    
+    // idToken 갱신
+    
+    func updateIdToken(completion: @escaping (String?, Error?) -> Void) {
+        Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                    
+            if let error = error {
+                self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요.")
+                completion(nil, error)
+            
+                return
+            }
+
+            if let idToken = idToken {
+                UserDefaults.standard.set(idToken, forKey: "idToken")
+                
+                completion(idToken,nil)
+                    
+            }
+            
         }
+    }
 }

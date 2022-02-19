@@ -9,7 +9,7 @@ import UIKit
 import UserNotifications
 import Firebase
 import FirebaseMessaging
-
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         
+        // IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
-        
+
+     
 //         Firebase Auth 사용하기위해 작성
         FirebaseApp.configure()
 

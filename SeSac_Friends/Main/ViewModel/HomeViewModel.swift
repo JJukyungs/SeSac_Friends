@@ -49,16 +49,16 @@ class HomeViewModel {
     
     var hobbyArray: [String] = []
     
+    var myHobbyArray: Observable<[String]> = Observable([])
+    
+    
     // 플로팅 버튼 상태 초기화면 0 취미 1 찾는 중 2
     var floatingStatus: Observable<Int> = Observable(0)
     
     
     
     
-    
-    
-    
-    // MARK: - 함수
+    // MARK: - API
     
     // main 화면으로 바로 들어가질때도 호출 될수 있게 
     func getUserInfo(completion: @escaping (UserInfo?, Error?, Int?) -> Void) {
@@ -91,6 +91,24 @@ class HomeViewModel {
             completion(onqueueresult, statuscode, error)
         }
     }
+    
+    // 새싹 친구 찾기 [취미화면에서]
+    
+    func postQueue(model: PostQueueModel, completion: @escaping (Int?, Error?) -> Void) {
+        
+        QueueAPIService.postQueue(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", model: model) { statuscode, error in
+            
+            guard let statuscode = statuscode else {
+                return
+            }
+
+            completion(statuscode, error)
+        }
+    }
+    
+    
+    
+    // MARK: - 함수
     
     // 새싹 이미지 분기 처리
     

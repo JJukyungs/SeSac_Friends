@@ -12,6 +12,13 @@
 		1E2CB30227B941F1007F4FE9 /* HomeHobbyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */; };
 		1E2CB30427B959A5007F4FE9 /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */; };
 		1E2CB30627B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */; };
+		1E2CB30827BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30727BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		1E2CB30A27BBA730007F4FE9 /* PostQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30927BBA730007F4FE9 /* PostQueueModel.swift */; };
+		1E2CB30C27BC05AC007F4FE9 /* HomeNearFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30B27BC05AC007F4FE9 /* HomeNearFriendViewController.swift */; };
+		1E2CB30E27BC0628007F4FE9 /* HomeNearFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30D27BC0628007F4FE9 /* HomeNearFriendView.swift */; };
+		1E2CB31027BC118E007F4FE9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30F27BC118E007F4FE9 /* Enums.swift */; };
+		1E2CB31227BE2379007F4FE9 /* HomeFriendTabManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */; };
+		1E2CB31427C007AC007F4FE9 /* HomeAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */; };
 		1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C80E2795859A009CB80E /* AppDelegate.swift */; };
 		1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8102795859A009CB80E /* SceneDelegate.swift */; };
 		1E40C8182795859B009CB80E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8172795859B009CB80E /* Assets.xcassets */; };
@@ -88,6 +95,13 @@
 		1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHobbyCollectionCell.swift; sourceTree = "<group>"; };
 		1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHobbyCollectionViewCell.swift; sourceTree = "<group>"; };
+		1E2CB30727BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		1E2CB30927BBA730007F4FE9 /* PostQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQueueModel.swift; sourceTree = "<group>"; };
+		1E2CB30B27BC05AC007F4FE9 /* HomeNearFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNearFriendViewController.swift; sourceTree = "<group>"; };
+		1E2CB30D27BC0628007F4FE9 /* HomeNearFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNearFriendView.swift; sourceTree = "<group>"; };
+		1E2CB30F27BC118E007F4FE9 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFriendTabManViewController.swift; sourceTree = "<group>"; };
+		1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAcceptViewController.swift; sourceTree = "<group>"; };
 		1E40C80B2795859A009CB80E /* SeSac_Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac_Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E40C80E2795859A009CB80E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E40C8102795859A009CB80E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +267,7 @@
 				1E40C8BC27AAFCD8009CB80E /* ProfileImageView.swift */,
 				1E40C8C327ACF4EE009CB80E /* ToggleView.swift */,
 				1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */,
+				1E2CB30727BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -336,6 +351,7 @@
 				1E40C8CB27AE736A009CB80E /* UpdateMyPageModel.swift */,
 				1E40C8D527B402CE009CB80E /* OnQueueModel.swift */,
 				1E40C8D727B40647009CB80E /* OnQueueResult.swift */,
+				1E2CB30927BBA730007F4FE9 /* PostQueueModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,9 +371,13 @@
 				1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */,
 				1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */,
 				1E40C89927A17029009CB80E /* HomeViewController.swift */,
+				1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */,
 				1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */,
 				1E40C89E27A2CC28009CB80E /* HomeView.swift */,
 				1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */,
+				1E2CB30B27BC05AC007F4FE9 /* HomeNearFriendViewController.swift */,
+				1E2CB30D27BC0628007F4FE9 /* HomeNearFriendView.swift */,
+				1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -371,6 +391,7 @@
 				1E40C8A027A2CD79009CB80E /* Shop */,
 				1E40C89627A1686A009CB80E /* Home */,
 				1E40C89C27A299E3009CB80E /* MainTabBarController.swift */,
+				1E2CB30F27BC118E007F4FE9 /* Enums.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -581,11 +602,13 @@
 				1E40C892279E6C3B009CB80E /* UserInfo.swift in Sources */,
 				1E40C850279702C5009CB80E /* PhoneCertificationView.swift in Sources */,
 				1E40C8CA27AD2550009CB80E /* AgeTableViewCell.swift in Sources */,
+				1E2CB31227BE2379007F4FE9 /* HomeFriendTabManViewController.swift in Sources */,
 				1E40C85A27982C00009CB80E /* TestViewController.swift in Sources */,
 				1E40C8C027AC19D5009CB80E /* GenderTableViewCell.swift in Sources */,
 				1E40C8AC27A2D985009CB80E /* FriendsView.swift in Sources */,
 				1E40C8A427A2CDDC009CB80E /* ShopViewController.swift in Sources */,
 				1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */,
+				1E2CB30C27BC05AC007F4FE9 /* HomeNearFriendViewController.swift in Sources */,
 				1E40C86C279D2351009CB80E /* LoginViewModel.swift in Sources */,
 				1E40C8BD27AAFCD8009CB80E /* ProfileImageView.swift in Sources */,
 				1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */,
@@ -595,6 +618,8 @@
 				1E40C85E27996B11009CB80E /* OnBoardingView.swift in Sources */,
 				1E40C86027998929009CB80E /* OnBoardingSlide.swift in Sources */,
 				1E40C8D427B3FFBD009CB80E /* QueueAPIService.swift in Sources */,
+				1E2CB30E27BC0628007F4FE9 /* HomeNearFriendView.swift in Sources */,
+				1E2CB30827BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				1E40C89527A11291009CB80E /* SignUpModel.swift in Sources */,
 				1E40C8CE27AFAE07009CB80E /* WithdrawTableViewCell.swift in Sources */,
 				1E40C87C279DA51D009CB80E /* EmailViewController.swift in Sources */,
@@ -606,6 +631,7 @@
 				1E40C8B927AAE6D7009CB80E /* ProfileDetailViewController.swift in Sources */,
 				1E40C8DC27B42A19009CB80E /* CustomAnnoationView.swift in Sources */,
 				1E40C84E2796B262009CB80E /* PhoneCertificationViewController.swift in Sources */,
+				1E2CB31027BC118E007F4FE9 /* Enums.swift in Sources */,
 				1E40C868279B95B1009CB80E /* InputCertificationView.swift in Sources */,
 				1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */,
 				1E40C8B727AAC570009CB80E /* ProfileViewModel.swift in Sources */,
@@ -617,11 +643,13 @@
 				1E40C84C2796AD63009CB80E /* UIColor+Extension.swift in Sources */,
 				1E40C8A627A2CDED009CB80E /* FriendsViewController.swift in Sources */,
 				1E40C880279DAFE1009CB80E /* GenderView.swift in Sources */,
+				1E2CB31427C007AC007F4FE9 /* HomeAcceptViewController.swift in Sources */,
 				1E40C8D227B3F674009CB80E /* QueueEndPoint.swift in Sources */,
 				1E40C89D27A299E3009CB80E /* MainTabBarController.swift in Sources */,
 				1E40C8522797F03D009CB80E /* CustomButton.swift in Sources */,
 				1E2CB30627B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift in Sources */,
 				1E40C89A27A17029009CB80E /* HomeViewController.swift in Sources */,
+				1E2CB30A27BBA730007F4FE9 /* PostQueueModel.swift in Sources */,
 				1E2CB30027B93020007F4FE9 /* HomeHobbyViewController.swift in Sources */,
 				1E40C874279D50E6009CB80E /* NickNameView.swift in Sources */,
 				1E40C8A827A2CE07009CB80E /* ProfileViewController.swift in Sources */,
