@@ -28,57 +28,27 @@ class HomeNearFriendViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
-        /*
-        // navigation Button [찾기 중단]
-        let stopButton = UIBarButtonItem(title: "찾기중단", style: .done, target: self, action: #selector(stopButtonClicked))
-        self.navigationItem.rightBarButtonItem = stopButton
-        stopButton.tintColor = .blackColor
-        */
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
         
         mainView.changeHobbyButton.addTarget(self, action: #selector(changeHobbyButtonClicked), for: .touchUpInside)
         mainView.refreshButton.addTarget(self, action: #selector(refreshButtonClicked), for: .touchUpInside)
+        
+        
+        mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
     }
+
+    
     
     // MARK: - Action
-    /*
-    @objc func stopButtonClicked() {
-        print(#function)
-        
-        QueueAPIService.deleteQueue(idToken: UserDefaults.standard.string(forKey: "idToken")!) { statuscode, error in
-            
-            switch statuscode {
-            case HTTPStatusCode.SUCCESS.rawValue:
-                print(statuscode)
-                
-                // 플로팅 버튼 수정
-                
-                // home 화면으로 이동
-                self.navigationController?.popToRootViewController(animated: true)
-            
-            // case 201, 406, 401  처리 해야함
-            case DeleteQueue.ALREADY_MATCHING.rawValue:
-                print(statuscode)
-                self.view.makeToast("누군가와 취미를 함께하기로 약속하셨어요!")
-                // 201 (GET, /queue/myQueueState) 호출 해야함
-                
-            case HTTPStatusCode.FIREBASE_TOKEN_ERROR.rawValue:
-                self.updateIdToken { idToken, error in
-                    self.stopButtonClicked()
-                }
-                
-            default:
-                print(statuscode)
-            }
-        }
-    }
-    */
     
     @objc func changeHobbyButtonClicked() {
         print(#function)
@@ -121,5 +91,25 @@ class HomeNearFriendViewController: UIViewController {
         }
         
     }
+    
+}
+
+extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BackgroundTableViewCell.identifier, for: indexPath) as? BackgroundTableViewCell else { return UITableViewCell() }
+        
+        
+        
+        return cell
+        
+    }
+    
     
 }

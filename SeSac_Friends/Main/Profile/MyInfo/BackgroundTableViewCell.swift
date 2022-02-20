@@ -12,6 +12,8 @@ class BackgroundTableViewCell: UITableViewCell {
     
     static let identifier = "BackgroundTableViewCell"
     
+    var toggleButtonAction: (() -> ())?
+    
     lazy var profileView: ProfileImageView = {
         let view = ProfileImageView(frame: .zero)
         view.backgroundImage.image = UIImage(named: "sesac_bg_01")
@@ -35,16 +37,18 @@ class BackgroundTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-       
-        
         setupView()
         setupConstraints()
         
+        toggleView.arrowButton.addTarget(self, action: #selector(toggleButtonClicked), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("error")
+    }
+    
+    @objc func toggleButtonClicked() {
+        toggleButtonAction?()
     }
     
     func setupView() {

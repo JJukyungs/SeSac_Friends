@@ -26,7 +26,7 @@ class HomeNearFriendView: UIView {
         return bt
     }()
     
-    
+    let tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,11 +40,18 @@ class HomeNearFriendView: UIView {
     }
     
     func setupView() {
+        addSubview(tableView)
         addSubview(changeHobbyButton)
         addSubview(refreshButton)
     }
     
     func setupConstraints() {
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(changeHobbyButton.snp.top).offset(-24)
+        }
         
         refreshButton.snp.makeConstraints { make in
             make.size.equalTo(48)

@@ -12,16 +12,10 @@ import Pageboy
 
 class HomeFriendTabManViewController: TabmanViewController {
     
-    
-    
-    
     var viewControllers: Array<UIViewController> = []
     
     let homeNearFriendsViewController = HomeNearFriendViewController()
     let homeAcceptViewController = HomeAcceptViewController()
-    
-  
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +47,7 @@ class HomeFriendTabManViewController: TabmanViewController {
     
     
     func setupTapMan() {
+        
         
         print(#function)
         

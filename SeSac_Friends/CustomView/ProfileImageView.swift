@@ -29,6 +29,11 @@ class ProfileImageView: UIView {
         return img
     }()
     
+    let matchButton: CustomButton = {
+        let bt = CustomButton(frame: .zero, type: .fill, text: "테스트")
+        return bt
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
