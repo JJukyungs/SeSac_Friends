@@ -215,19 +215,32 @@ class HomeViewController: UIViewController {
                     case 0:
                         HomeViewModel.shared.womanAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
                     
+                        // 주변 친구들 취미 배열에 넣어주기
+                        HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+                        
+                        // Set을 활용해 배열의 중복 값 제거
+                        HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
+                        
+                        
                     case 1:
                         HomeViewModel.shared.manAnnotation.append(CustomAnnotation(type: HomeViewModel.shared.setupSesacFaceImageType(sesac: otherUserInfo.sesac), coordinate: CLLocationCoordinate2D(latitude: otherUserInfo.lat, longitude: otherUserInfo.long)))
+                        
+                        // 주변 친구들 취미 배열에 넣어주기
+                        HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+                        
+                        // Set을 활용해 배열의 중복 값 제거
+                        HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
                     default:
                         self.view.makeToast("error")
                         print("HomeViewController 301.p")
                     }
                     
                     
-                    // 주변 친구들 취미 배열에 넣어주기
-                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
-                    
-                    // Set을 활용해 배열의 중복 값 제거
-                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
+//                    // 주변 친구들 취미 배열에 넣어주기
+//                    HomeViewModel.shared.nearByFriendsHobby.value.append(contentsOf: otherUserInfo.hf)
+//
+//                    // Set을 활용해 배열의 중복 값 제거
+//                    HomeViewModel.shared.nearByFriendsHobby.value = Array(Set(HomeViewModel.shared.nearByFriendsHobby.value))
                     
                     
                     

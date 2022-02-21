@@ -37,6 +37,7 @@ class ToggleView: UIView {
     func setupView() {
         addSubview(titleLabel)
         addSubview(arrowButton)
+        
     }
     
     func setupConstraints() {

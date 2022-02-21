@@ -19,6 +19,7 @@
 		1E2CB31027BC118E007F4FE9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB30F27BC118E007F4FE9 /* Enums.swift */; };
 		1E2CB31227BE2379007F4FE9 /* HomeFriendTabManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */; };
 		1E2CB31427C007AC007F4FE9 /* HomeAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */; };
+		1E2CB31727C29C33007F4FE9 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CB31627C29C33007F4FE9 /* EmptyView.swift */; };
 		1E40C80F2795859A009CB80E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C80E2795859A009CB80E /* AppDelegate.swift */; };
 		1E40C8112795859A009CB80E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8102795859A009CB80E /* SceneDelegate.swift */; };
 		1E40C8182795859B009CB80E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E40C8172795859B009CB80E /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		1E2CB30F27BC118E007F4FE9 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFriendTabManViewController.swift; sourceTree = "<group>"; };
 		1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAcceptViewController.swift; sourceTree = "<group>"; };
+		1E2CB31627C29C33007F4FE9 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		1E40C80B2795859A009CB80E /* SeSac_Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac_Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E40C80E2795859A009CB80E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E40C8102795859A009CB80E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E2CB31527C29C06007F4FE9 /* FindSeSac */ = {
+			isa = PBXGroup;
+			children = (
+				1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */,
+				1E2CB30B27BC05AC007F4FE9 /* HomeNearFriendViewController.swift */,
+				1E2CB30D27BC0628007F4FE9 /* HomeNearFriendView.swift */,
+				1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */,
+				1E2CB31627C29C33007F4FE9 /* EmptyView.swift */,
+			);
+			path = FindSeSac;
+			sourceTree = "<group>";
+		};
 		1E40C8022795859A009CB80E = {
 			isa = PBXGroup;
 			children = (
@@ -367,17 +381,14 @@
 		1E40C89627A1686A009CB80E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1E2CB31527C29C06007F4FE9 /* FindSeSac */,
 				1E2CB30127B941F1007F4FE9 /* HomeHobbyCollectionCell.swift */,
 				1E2CB30327B959A5007F4FE9 /* HobbyCollectionHeaderView.swift */,
 				1E2CB30527B970F6007F4FE9 /* MyHobbyCollectionViewCell.swift */,
 				1E40C89927A17029009CB80E /* HomeViewController.swift */,
-				1E2CB31327C007AC007F4FE9 /* HomeAcceptViewController.swift */,
 				1E2CB2FF27B93020007F4FE9 /* HomeHobbyViewController.swift */,
 				1E40C89E27A2CC28009CB80E /* HomeView.swift */,
 				1E2CB2FD27B92682007F4FE9 /* HomeHobbyView.swift */,
-				1E2CB30B27BC05AC007F4FE9 /* HomeNearFriendViewController.swift */,
-				1E2CB30D27BC0628007F4FE9 /* HomeNearFriendView.swift */,
-				1E2CB31127BE2379007F4FE9 /* HomeFriendTabManViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -610,6 +621,7 @@
 				1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */,
 				1E2CB30C27BC05AC007F4FE9 /* HomeNearFriendViewController.swift in Sources */,
 				1E40C86C279D2351009CB80E /* LoginViewModel.swift in Sources */,
+				1E2CB31727C29C33007F4FE9 /* EmptyView.swift in Sources */,
 				1E40C8BD27AAFCD8009CB80E /* ProfileImageView.swift in Sources */,
 				1E40C86427998CC2009CB80E /* OnBoardingCollectionViewCell.swift in Sources */,
 				1E40C8D027B38770009CB80E /* HomeViewModel.swift in Sources */,

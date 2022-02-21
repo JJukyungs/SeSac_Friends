@@ -56,6 +56,11 @@ class HomeViewModel {
     var floatingStatus: Observable<Int> = Observable(0)
     
     
+    // 성별, 취미로 필터링된 주변 새싹 정보
+    // 새싹에서 2로 고정해놧다.. 이걸 못봣네
+    var fillterResultDB: [FromQueueDB] = []
+
+    
     
     
     // MARK: - API

@@ -48,12 +48,12 @@ class ProfileImageView: UIView {
     func setupView() {
         addSubview(backgroundImage)
         addSubview(sesacFaceImage)
+        addSubview(matchButton)
     }
     
     func setupConstraints() {
         
         backgroundImage.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -61,12 +61,15 @@ class ProfileImageView: UIView {
         
         sesacFaceImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-//            make.centerY.equalToSuperview().offset(9)
-//            make.size.equalTo(backgroundImage.snp.height).multipliedBy(0.9)
-            
             make.size.equalTo(184)
             make.bottom.equalTo(backgroundImage.snp.bottom).offset(9)
-            
         }
+        
+        matchButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(12)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+        }
+        
     }
 }

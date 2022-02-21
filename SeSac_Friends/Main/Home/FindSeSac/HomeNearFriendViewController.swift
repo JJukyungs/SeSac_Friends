@@ -8,12 +8,15 @@
 import UIKit
 import Tabman
 import Pageboy
+import CoreLocation
 
 
 class HomeNearFriendViewController: UIViewController {
     
     let mainView = HomeNearFriendView()
     let viewModel = HomeViewModel.shared
+    
+    var fromQueueDB = [FromQueueDB]()
     
     override func loadView() {
         self.view = mainView
@@ -24,7 +27,7 @@ class HomeNearFriendViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         
-        
+        nearSearchFriend()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,7 +38,8 @@ class HomeNearFriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
+        // TableView configure
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         
@@ -46,7 +50,24 @@ class HomeNearFriendViewController: UIViewController {
         mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
     }
 
-    
+    func nearSearchFriend() {
+        let searchModel = OnQueueModel(region: viewModel.centerRegion.value, lat: viewModel.centerLat.value, long: viewModel.centerLong.value)
+
+        
+        viewModel.searchFriends(model: searchModel) { OnQueueResult, statuscode, error in
+            
+            guard let OnQueueResult = OnQueueResult else {
+                return
+            }
+            
+            self.viewModel.fillterResultDB = OnQueueResult.fromQueueDB
+            
+            self.mainView.tableView.reloadData()
+            print("------------------------")
+            print(self.viewModel.fillterResultDB)
+            print("------------------------")
+        }
+    }
     
     // MARK: - Action
     
@@ -91,6 +112,51 @@ class HomeNearFriendViewController: UIViewController {
         }
         
     }
+    /*
+    func nearFriendSearch() {
+        
+        let searchModel = OnQueueModel(region: viewModel.centerRegion.value, lat: viewModel.centerLat.value, long: viewModel.centerLong.value)
+        
+        viewModel.searchFriends(model: searchModel) { OnQueueResult, statusCode, error in
+            
+            guard let OnQueueResult = OnQueueResult else {
+                return
+            }
+            
+            OnQueueResult.fromQueueDB.forEach { otherUserInfo in
+                
+                
+                
+            }
+            
+            switch statusCode {
+            case HTTPStatusCode.SUCCESS.rawValue:
+
+                OnQueueResult.fromQueueDB.forEach { otherUserInfo in
+                    
+                    
+                }
+                
+                
+            case HTTPStatusCode.FIREBASE_TOKEN_ERROR.rawValue:
+                
+                self.updateIdToken { idToken, error in
+                    
+                    if let idToken = idToken {
+                        self.nearFriendSearch()
+                    }
+
+                }
+                
+            default:
+                print("server or client Error")
+
+            }
+            
+        }
+    }
+    */
+    
     
 }
 
@@ -98,13 +164,16 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.fillterResultDB.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BackgroundTableViewCell.identifier, for: indexPath) as? BackgroundTableViewCell else { return UITableViewCell() }
         
+        cell.profileView.matchButton.backgroundColor = UIColor.errorColor
+        
+        cell.toggleView.titleLabel.text = viewModel.fillterResultDB[indexPath.row].nick
         
         
         return cell

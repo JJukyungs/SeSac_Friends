@@ -26,6 +26,8 @@ class HomeNearFriendView: UIView {
         return bt
     }()
     
+    let emptyView = EmptyView()
+    
     let tableView = UITableView()
     
     override init(frame: CGRect) {
@@ -43,6 +45,8 @@ class HomeNearFriendView: UIView {
         addSubview(tableView)
         addSubview(changeHobbyButton)
         addSubview(refreshButton)
+        addSubview(emptyView)
+        emptyView.titleLabel.text = "아쉽게도 주변에 새싹이 없어요ㅠ"
     }
     
     func setupConstraints() {
@@ -66,6 +70,10 @@ class HomeNearFriendView: UIView {
             make.height.equalTo(48)
         }
         
-        
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(changeHobbyButton.snp.top).offset(-24)
+        }
     }
 }
