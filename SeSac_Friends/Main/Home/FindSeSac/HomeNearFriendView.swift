@@ -54,7 +54,8 @@ class HomeNearFriendView: UIView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalTo(changeHobbyButton.snp.top).offset(-24)
+            make.bottom.equalToSuperview()
+//            make.bottom.equalTo(changeHobbyButton.snp.top).offset(-24)
         }
         
         refreshButton.snp.makeConstraints { make in

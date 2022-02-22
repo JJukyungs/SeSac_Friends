@@ -28,6 +28,9 @@ class HomeNearFriendViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         
         nearSearchFriend()
+        
+        emptyViewChanged()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,6 +42,8 @@ class HomeNearFriendViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
+        
+        
         // TableView configure
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
@@ -48,8 +53,28 @@ class HomeNearFriendViewController: UIViewController {
         
         
         mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
+        
+        
+        nearSearchFriend()
+        emptyViewChanged()
+        
     }
 
+    func emptyViewChanged() {
+        
+        if viewModel.fillterResultDB.isEmpty {
+            mainView.tableView.isHidden = true
+            mainView.emptyView.isHidden = false
+            mainView.changeHobbyButton.isHidden = false
+            mainView.refreshButton.isHidden = false
+        } else {
+            mainView.tableView.isHidden = false
+            mainView.emptyView.isHidden = true
+            mainView.changeHobbyButton.isHidden = true
+            mainView.refreshButton.isHidden = true
+        }
+    }
+    
     func nearSearchFriend() {
         let searchModel = OnQueueModel(region: viewModel.centerRegion.value, lat: viewModel.centerLat.value, long: viewModel.centerLong.value)
 

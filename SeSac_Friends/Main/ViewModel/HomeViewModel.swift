@@ -15,9 +15,26 @@ enum floationgStatus: Int {
 }
 
 
+// final error  -> Swift Lint
+
+// print 찍으면 욕먹음!! -> 나중에 앱에서도 리소스, 메모리를 잡아먹음
+// print 찍는걸 막는 라이브러리 있음.
+
+// 테크 블로그 -> lint 쓰자 . 무조건!!
+
+// R.swift
+
+// identifier 은닉화
+
+// 나중에라는 게 기술부채 느낌!!!!
+
+// PropertyWrapper .. enum
+
+// 프로젝트 세팅
 
 
-class HomeViewModel {
+
+final class HomeViewModel {
     
     static let shared = HomeViewModel()
     
