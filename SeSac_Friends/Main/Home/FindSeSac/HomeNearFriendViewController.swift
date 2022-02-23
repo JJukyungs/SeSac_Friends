@@ -47,13 +47,17 @@ class HomeNearFriendViewController: UIViewController {
         // TableView configure
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        mainView.tableView.rowHeight = UITableView.automaticDimension
+        
         
         mainView.changeHobbyButton.addTarget(self, action: #selector(changeHobbyButtonClicked), for: .touchUpInside)
         mainView.refreshButton.addTarget(self, action: #selector(refreshButtonClicked), for: .touchUpInside)
         
         
-        mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
-        
+//        mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
+  
+        mainView.tableView.register(OtherProfileTableViewCell.self, forCellReuseIdentifier: OtherProfileTableViewCell.identifier)
+
         
         nearSearchFriend()
         emptyViewChanged()
@@ -194,6 +198,7 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        /*
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BackgroundTableViewCell.identifier, for: indexPath) as? BackgroundTableViewCell else { return UITableViewCell() }
         
         cell.profileView.matchButton.backgroundColor = UIColor.errorColor
@@ -203,6 +208,25 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
         
         return cell
         
+        */
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherProfileTableViewCell.identifier, for: indexPath) as? OtherProfileTableViewCell else { return UITableViewCell() }
+        
+        cell.contentView.isUserInteractionEnabled = false
+        
+        cell.otherProfileView.matchButton.backgroundColor = UIColor.errorColor
+        
+        cell.toggleView.titleLabel.text = viewModel.fillterResultDB[indexPath.row].nick
+        
+        cell.toggleButtonAction = {
+            // 왜 여기서 두번 클릭해야 넘어갈까?
+            cell.subView.isHidden = !cell.subView.isHidden
+            print(cell.subView.isHidden)
+            
+            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        
+        return cell
     }
     
     
