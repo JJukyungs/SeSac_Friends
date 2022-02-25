@@ -230,6 +230,7 @@
 				1E40C85C27996AB0009CB80E /* Onboarding */,
 				1E40C866279B2F4F009CB80E /* CustomView */,
 				1E40C8102795859A009CB80E /* SceneDelegate.swift */,
+				1E2CB30F27BC118E007F4FE9 /* Enums.swift */,
 				1E40C80E2795859A009CB80E /* AppDelegate.swift */,
 				1E40C8122795859A009CB80E /* TestViewController.swift */,
 				1E40C86F279D2D47009CB80E /* Observable.swift */,
@@ -408,7 +409,6 @@
 				1E40C8A027A2CD79009CB80E /* Shop */,
 				1E40C89627A1686A009CB80E /* Home */,
 				1E40C89C27A299E3009CB80E /* MainTabBarController.swift */,
-				1E2CB30F27BC118E007F4FE9 /* Enums.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
