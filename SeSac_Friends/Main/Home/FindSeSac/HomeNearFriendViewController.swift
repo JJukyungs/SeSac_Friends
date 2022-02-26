@@ -54,9 +54,9 @@ class HomeNearFriendViewController: UIViewController {
         mainView.refreshButton.addTarget(self, action: #selector(refreshButtonClicked), for: .touchUpInside)
         
         
-//        mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
+        mainView.tableView.register(BackgroundTableViewCell.self, forCellReuseIdentifier: BackgroundTableViewCell.identifier)
   
-        mainView.tableView.register(OtherProfileTableViewCell.self, forCellReuseIdentifier: OtherProfileTableViewCell.identifier)
+//        mainView.tableView.register(OtherProfileTableViewCell.self, forCellReuseIdentifier: OtherProfileTableViewCell.identifier)
 
         
         nearSearchFriend()
@@ -198,7 +198,7 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        /*
+        // 일단 임시용 데이터
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BackgroundTableViewCell.identifier, for: indexPath) as? BackgroundTableViewCell else { return UITableViewCell() }
         
         cell.profileView.matchButton.backgroundColor = UIColor.errorColor
@@ -208,8 +208,9 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
         
         return cell
         
-        */
         
+        
+        /*
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherProfileTableViewCell.identifier, for: indexPath) as? OtherProfileTableViewCell else { return UITableViewCell() }
         
         cell.contentView.isUserInteractionEnabled = false
@@ -227,6 +228,8 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
         }
         
         return cell
+         
+         */
     }
     
     

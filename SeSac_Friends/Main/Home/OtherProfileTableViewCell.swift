@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 
 
+/// 일단 안쓸거임 갈아업기전에 임시 데이터 보관용
+
+
+
 class OtherProfileTableViewCell: UITableViewCell {
     
     static let identifier = "OtherProfileTableViewCell"

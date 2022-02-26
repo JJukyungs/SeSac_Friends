@@ -88,6 +88,7 @@
 		1E40C8D827B40647009CB80E /* OnQueueResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8D727B40647009CB80E /* OnQueueResult.swift */; };
 		1E40C8DC27B42A19009CB80E /* CustomAnnoationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */; };
 		1E40C8DE27B5401E009CB80E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8DD27B5401E009CB80E /* UIViewController+Extension.swift */; };
+		1EBD964027C9524500447BFF /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD963F27C9524500447BFF /* PopUpView.swift */; };
 		5043C0669EF9B56BE9BC29C4 /* Pods_SeSac_Friends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		1E40C8D727B40647009CB80E /* OnQueueResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnQueueResult.swift; sourceTree = "<group>"; };
 		1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnoationView.swift; sourceTree = "<group>"; };
 		1E40C8DD27B5401E009CB80E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		1EBD963F27C9524500447BFF /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		74B873DD0B637366C85FC28A /* Pods-SeSac_Friends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.debug.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.debug.xcconfig"; sourceTree = "<group>"; };
 		9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSac_Friends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 				1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */,
 				1E2CB30727BA85E9007F4FE9 /* LeftAlignedCollectionViewFlowLayout.swift */,
 				1E2CB31A27C55FEA007F4FE9 /* ReputationView.swift */,
+				1EBD963F27C9524500447BFF /* PopUpView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EBD964027C9524500447BFF /* PopUpView.swift in Sources */,
 				1E2CB2FE27B92682007F4FE9 /* HomeHobbyView.swift in Sources */,
 				1E2CB30227B941F1007F4FE9 /* HomeHobbyCollectionCell.swift in Sources */,
 				1E40C876279D85E2009CB80E /* NickNameViewController.swift in Sources */,
