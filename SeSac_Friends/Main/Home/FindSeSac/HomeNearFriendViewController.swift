@@ -208,7 +208,7 @@ extension HomeNearFriendViewController: UITableViewDelegate, UITableViewDataSour
         
         return cell
         
-        
+        // 후에 구현해도 된다고한다...
         
         /*
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherProfileTableViewCell.identifier, for: indexPath) as? OtherProfileTableViewCell else { return UITableViewCell() }

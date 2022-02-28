@@ -13,6 +13,7 @@ class BackgroundTableViewCell: UITableViewCell {
     static let identifier = "BackgroundTableViewCell"
     
     var toggleButtonAction: (() -> ())?
+    var matchButtonAction: (() -> ())?
     
     lazy var profileView: ProfileImageView = {
         let view = ProfileImageView(frame: .zero)
@@ -41,6 +42,7 @@ class BackgroundTableViewCell: UITableViewCell {
         setupConstraints()
         
         toggleView.arrowButton.addTarget(self, action: #selector(toggleButtonClicked), for: .touchUpInside)
+        profileView.matchButton.addTarget(self, action: #selector(matchButtonClicked), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +51,10 @@ class BackgroundTableViewCell: UITableViewCell {
     
     @objc func toggleButtonClicked() {
         toggleButtonAction?()
+    }
+    
+    @objc func matchButtonClicked() {
+        matchButtonAction?()
     }
     
     func setupView() {

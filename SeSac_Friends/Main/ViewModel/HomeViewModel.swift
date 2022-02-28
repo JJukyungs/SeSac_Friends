@@ -129,6 +129,8 @@ final class HomeViewModel {
     }
     
     
+    // 새싹 찾기 -> 요청, 수락
+    
     
     // MARK: - 함수
     

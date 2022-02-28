@@ -61,9 +61,7 @@ class QueueAPIService {
         }
         
     }
-    
-    // DeletQueue 해야한다..
-    
+        
     static func deleteQueue(idToken: String, completion: @escaping (Int?, Error?) -> Void) {
         
         let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
@@ -74,4 +72,33 @@ class QueueAPIService {
             completion(response.response?.statusCode, response.error)
         }
     }
+    
+    
+    // 새싹 찾기 부분
+    
+    static func hobbyReqeust(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+        
+        let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
+
+        let parameters: Parameters = ["otheruid": otheruid]
+        
+        AF.request(QueueEndPoint.hobbyRequest.url.absoluteString, method: .post, parameters: parameters, headers: headers).responseString { response in
+            
+            print(#function)
+            completion(response.response?.statusCode, response.error)
+        }
+    }
+    
+    static func hobbyAccept(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+        
+        let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
+        let parameters: Parameters = ["otheruid": otheruid]
+        
+        AF.request(QueueEndPoint.hobbyAccept.url.absoluteString, method: .post, parameters: parameters, headers: headers).responseString { response in
+            
+            print(#function)
+            completion(response.response?.statusCode, response.error)
+        }
+    }
+    
 }

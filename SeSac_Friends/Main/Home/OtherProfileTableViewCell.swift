@@ -20,6 +20,16 @@ class OtherProfileTableViewCell: UITableViewCell {
     var toggleButtonAction: (() -> ())?
     var requestButtonAction: (() -> ())?
     
+    var isTouched: Bool? {
+        didSet {
+            if isTouched == true {
+                subView.isHidden = false
+            } else {
+                subView.isHidden = true
+            }
+        }
+    }
+    
     
     lazy var otherProfileView: ProfileImageView = {
         let view = ProfileImageView(frame: .zero)
@@ -53,11 +63,7 @@ class OtherProfileTableViewCell: UITableViewCell {
     
     
     var subView = UIView()
-    {
-        didSet {
-            subView.isHidden = true
-        }
-    }
+    
     
     let sesacTitle: UILabel = {
         let label = UILabel()
