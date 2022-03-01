@@ -131,6 +131,30 @@ final class HomeViewModel {
     
     // 새싹 찾기 -> 요청, 수락
     
+    func hobbyRequest(otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+        
+        QueueAPIService.hobbyRequest(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
+            
+            guard let statuscode = statuscode else {
+                return
+            }
+            completion(statuscode, error)
+        }
+    }
+    
+    func hobbyAccept(otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+        
+        QueueAPIService.hobbyAccept(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
+            
+            guard let statuscode = statuscode else {
+                return
+            }
+
+            completion(statuscode, error)
+        }
+    }
+    
+    
     
     // MARK: - 함수
     
@@ -183,4 +207,8 @@ final class HomeViewModel {
         
         self.floatingStatus.value = floatingStatus
     }
+    
+    
+    
+    
 }

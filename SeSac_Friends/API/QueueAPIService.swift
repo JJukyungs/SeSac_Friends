@@ -76,7 +76,7 @@ class QueueAPIService {
     
     // 새싹 찾기 부분
     
-    static func hobbyReqeust(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+    static func hobbyRequest(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
         
         let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
 
