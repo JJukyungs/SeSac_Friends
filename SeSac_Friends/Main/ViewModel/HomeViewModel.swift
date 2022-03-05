@@ -78,6 +78,11 @@ final class HomeViewModel {
     var fillterResultDB: [FromQueueDB] = []
 
     
+    // myQueueSate 값
+    
+    var myQueueState = Observable(MyQueueStateResult(dodged: 0, matched: 0, reviewed: 0, matchedNick: "", matchedUid: ""))
+    
+    
     
     
     // MARK: - API
@@ -133,7 +138,7 @@ final class HomeViewModel {
     
     func hobbyRequest(otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
         
-        QueueAPIService.hobbyRequest(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
+        QueueAPIService.postHobbyRequest(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
             
             guard let statuscode = statuscode else {
                 return
@@ -144,13 +149,28 @@ final class HomeViewModel {
     
     func hobbyAccept(otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
         
-        QueueAPIService.hobbyAccept(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
+        QueueAPIService.postHobbyAccept(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "", otheruid: otheruid) { statuscode, error in
             
             guard let statuscode = statuscode else {
                 return
             }
 
             completion(statuscode, error)
+        }
+    }
+    
+    func myQueueState(completion: @escaping (MyQueueStateResult?, Int?, Error?) -> Void) {
+        
+        QueueAPIService.getMyQueueState(idToken: UserDefaults.standard.string(forKey: "idToken") ?? "") { myQueuestate, statuscode, error in
+            
+            guard let myQueuestate = myQueuestate else {
+                completion(nil, statuscode, error)
+                return
+            }
+            self.myQueueState.value = myQueuestate
+            
+            completion(myQueuestate, statuscode, error)
+
         }
     }
     

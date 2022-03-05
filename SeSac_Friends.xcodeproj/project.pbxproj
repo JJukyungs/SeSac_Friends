@@ -89,6 +89,7 @@
 		1E40C8DC27B42A19009CB80E /* CustomAnnoationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */; };
 		1E40C8DE27B5401E009CB80E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40C8DD27B5401E009CB80E /* UIViewController+Extension.swift */; };
 		1EBD964027C9524500447BFF /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD963F27C9524500447BFF /* PopUpView.swift */; };
+		1EBD969627CFBCE600447BFF /* MyQueueStateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD969527CFBCE600447BFF /* MyQueueStateResult.swift */; };
 		5043C0669EF9B56BE9BC29C4 /* Pods_SeSac_Friends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,7 @@
 		1E40C8DB27B42A19009CB80E /* CustomAnnoationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnoationView.swift; sourceTree = "<group>"; };
 		1E40C8DD27B5401E009CB80E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		1EBD963F27C9524500447BFF /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		1EBD969527CFBCE600447BFF /* MyQueueStateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueStateResult.swift; sourceTree = "<group>"; };
 		74B873DD0B637366C85FC28A /* Pods-SeSac_Friends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSac_Friends.debug.xcconfig"; path = "Target Support Files/Pods-SeSac_Friends/Pods-SeSac_Friends.debug.xcconfig"; sourceTree = "<group>"; };
 		9165E20EB37090DD7B1724CA /* Pods_SeSac_Friends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSac_Friends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -375,6 +377,7 @@
 				1E40C8D527B402CE009CB80E /* OnQueueModel.swift */,
 				1E40C8D727B40647009CB80E /* OnQueueResult.swift */,
 				1E2CB30927BBA730007F4FE9 /* PostQueueModel.swift */,
+				1EBD969527CFBCE600447BFF /* MyQueueStateResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				1E40C8A427A2CDDC009CB80E /* ShopViewController.swift in Sources */,
 				1E40C884279DC173009CB80E /* GenderImageView.swift in Sources */,
 				1E2CB30C27BC05AC007F4FE9 /* HomeNearFriendViewController.swift in Sources */,
+				1EBD969627CFBCE600447BFF /* MyQueueStateResult.swift in Sources */,
 				1E40C86C279D2351009CB80E /* LoginViewModel.swift in Sources */,
 				1E2CB31727C29C33007F4FE9 /* EmptyView.swift in Sources */,
 				1E40C8BD27AAFCD8009CB80E /* ProfileImageView.swift in Sources */,

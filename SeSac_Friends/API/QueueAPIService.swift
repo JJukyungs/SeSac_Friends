@@ -76,7 +76,7 @@ class QueueAPIService {
     
     // 새싹 찾기 부분
     
-    static func hobbyRequest(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+    static func postHobbyRequest(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
         
         let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
 
@@ -89,7 +89,7 @@ class QueueAPIService {
         }
     }
     
-    static func hobbyAccept(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
+    static func postHobbyAccept(idToken: String, otheruid: String, completion: @escaping (Int?, Error?) -> Void) {
         
         let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
         let parameters: Parameters = ["otheruid": otheruid]
@@ -101,4 +101,15 @@ class QueueAPIService {
         }
     }
     
+    
+    static func getMyQueueState(idToken: String, completion: @escaping (MyQueueStateResult?, Int?, Error?) -> Void) {
+        
+        let headers = ["idtoken" : idToken, "Content-Type": "application/x-www-form-urlencoded"] as HTTPHeaders
+        
+        AF.request(QueueEndPoint.myQueueState.url.absoluteString, method: .get, headers: headers).responseDecodable(of: MyQueueStateResult.self) { response in
+            
+            completion(response.value, response.response?.statusCode, response.error)
+        }
+        
+    }
 }
