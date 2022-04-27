@@ -1,4 +1,4 @@
-# 새싹 프렌즈
+# 새싹 프렌즈 [SeSAC Friends]
 ---
 ### 내 위치 중심으로 같은 취미를 가진 친구를 찾아 매칭 후 채팅까지 연결해주는 앱
 
@@ -16,7 +16,8 @@
 - 1:1 매칭 후 채팅 그리고 리뷰 기능 [미구현]
 
 
-> 프로젝트 계획
+#### 상세 설명
+- 수정
 
 
 
@@ -26,6 +27,3 @@
 
 
 ### 프로젝트 진행 사항
-
-[Notion](https://fir-treatment-31c.notion.site/SeSac-Friends-Service-Level-Project-5a40d82f3d6a42188dcfb4832b332ab0)
-
